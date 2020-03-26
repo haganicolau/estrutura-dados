@@ -2,7 +2,7 @@ package com.estruturadados.stack;
 
 /**
  * @author: Hagamenon Oliveira
- * @since: 02/04/2018
+ * @since: 26/03/2020
  * @description: Estrutura de dados do tipo LIFO
  * */
 public class StaticStack {
@@ -12,13 +12,20 @@ public class StaticStack {
      *********************************/
 
     /**Topo da pilha, onde deve ser empilhado e desempilhado*/
-    int top = -1;
+    int top;
 
     /**Tamanho máximo da pilha*/
-    int max = 5;
+    int size;
 
     /**Estrutura estática da pilha*/
-    int Stack[] = new int[max];
+    int stack[];
+    
+    
+    public StaticStack(int size) {
+        this.top = -1;
+        this.size = size;
+        this.stack = new int [size];
+    }
 
 
     /********************************
@@ -26,48 +33,54 @@ public class StaticStack {
      *********************************/
 
     /**Função responsável por empilhar, recebe número por parâmetro e empilha no topo*/
-    public void push(int number){
+    public void push(int number) throws Exception {
         //Verifica se pilha está cheia. Se estiver cheia não empilha.
         if(isFull()) {
-            System.out.println("Pilha cheia! Não é possível fazer o push");
+            System.out.println("Pilha cheia!");
+            throw new Exception("Pilha cheia");
         } else{
             top++;
-            Stack[top]=number;
+            stack[top]=number;
         }
     }
 
     /**Função responsável por desempilhar, decrementa o topo, perdendo a referência do elemento. E retorna o elemento*/
-    public int pop(){
+    public int pop() throws Exception {
         //Verifica se pilha está vazia. Se estiver não retorna nada.
         if(isEmpty()){
             System.out.println("Pilha vazia");
-            return -1;
+            throw new Exception("Pilha Vazia");
         } else {
-            int number = Stack[top];
+            int number = stack[top];
             top--;
             return number;
         }
     }
 
     /**Função responsável por verificar se pilha está vazia*/
-    public boolean isEmpty(){
-        if(top == -1){
-            return true;
-        } else{
-            return false;
-        }
+    public boolean isEmpty() {
+       return top == -1;
     }
+    
     /**Função responsável por verificar se pilha está vazia*/
-    public boolean isFull(){
-        if(top == max-1){
-            return true;
-        } else{
-            return false;
-        }
+    public boolean isFull() {
+        return top == size - 1;
     }
 
     /**Função responsável por informar o tamamnho atual da pilha*/
-    public int size(){
-        return top;
+    public int lenght() {
+        return this.size - 1;
+    }
+    
+    /**Função responsável por printar os elementos da pilha*/
+    public void print() throws Exception {
+        if(isEmpty()) {
+            System.out.println("Pilha vazia");
+            throw new Exception("Pilha Vazia");
+        }
+        
+        for(int topAux = this.top; topAux >=0; topAux--) {
+            System.out.println(this.stack[topAux]);
+        }
     }
 }
