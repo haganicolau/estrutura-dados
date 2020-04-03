@@ -67,14 +67,7 @@ public class Rotas {
     }
     
     public int navegar(int origem, int destino) throws Exception {
-        origem = 0;
-        destino = 4;
-        
-        /*mapa[0][4]
-        * origem: cáceres
-        * destino: tangará
-        */
-        
+               
         int distancia = this.mapa[origem][destino];
         
         if(distancia == -1) {
@@ -83,19 +76,16 @@ public class Rotas {
         
         if(distancia != 0) {
             return distancia;
-        }
+        } 
         
-        /*
-        if(mapa[0][4] == 0) {
-            for(){
-                if(mapa[1][4] != 0) {
-                    distanciaParcial;
-                }
+        int destinoFinal = 0;
+        for(int origemAux = 0; origemAux < 6; origemAux++) {
+            
+            if(mapa[origemAux][destino] == 0 || mapa[origemAux][destino] == -1) {
+                continue;
             }
+            destinoFinal =  mapa[origem][origemAux] + mapa[origemAux][destino];
         }
-        */
-        
-        
+        return destinoFinal;
     }
-    
 }
