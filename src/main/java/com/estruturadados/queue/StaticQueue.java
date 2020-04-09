@@ -1,63 +1,57 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.estruturadados.queue;
 
 /**
  *
- * @author hagan
+ * @author hagamenon.oliviveira <hagamenon.oliveira@unialfa.com.br>
  */
 public class StaticQueue {
-    int[] queue;
+    
+    int queue[];
     int first;
     int last;
     int quantity;
     
-    void create(int size) {
+    public StaticQueue(int size) {
         this.queue = new int[size];
         this.first = 0;
-        this.last = 0;
+        this.last = -1;
         this.quantity = 0;
     }
     
     boolean isEmpty() {
-        return quantity == 0;
+        return this.quantity == 0;
     }
     
     boolean isFull() {
         return this.quantity == this.queue.length;
     }
     
-    void insert(int element){
+    void queue(int element) throws Exception {
         if(isFull()) {
-            System.out.println("Fila Cheia!");
-        } else {
-            queue[last] = element;
-            last++;
-            quantity++;
-            if(last == 4){
-                last = 0;
-            }
+            throw new Exception("Fila cheia");
+        } 
+        
+        if(last == queue.length) {
+            last = 0;
         }
+        queue[last] = element;
+        quantity++;
     }
     
-    int remove(){
-        int element;
+    int dequeue() throws Exception{
         if(isEmpty()) {
-            element = -1;
-            System.out.println("Fila Vazia");
-        } else {
-            element = queue[first];
-            quantity --;
-            first ++;
-            if(first == 4){
-                first = 0;
-            }
+            throw new Exception("Fila vazia");
         }
-        return element;
         
+        int element;
+        element = queue[first];
+        
+        first++;
+        if(first == queue.length) {
+            first = 0;
+        }
+        quantity--;
+        return element;
     }
     
 }
