@@ -31,6 +31,7 @@ public class StaticQueue {
             throw new Exception("Fila cheia");
         } 
         
+        last++;
         if(last == queue.length) {
             last = 0;
         }
@@ -53,5 +54,14 @@ public class StaticQueue {
         quantity--;
         return element;
     }
+    
+    int getQuantity() {
+        return quantity;
+    }
+    
+   /*
+    * Implementem um método que printa os elementos da fila, mantendo as mesmas propriedades. 
+    * você deve usar as propriedades first e last.
+    */
     
 }
