@@ -1,50 +1,47 @@
 package com.estruturadados.queue;
 
 public class DinamicQueue {
-
+    
     No first;
     No last;
     int size;
-
-    void create() {
-        first = new No();
-        first.setNoValor(-1);
-        last = new No();
-        last.setNoValor(-1);
-        size = 0;
+    
+    public DinamicQueue() {
+        this.first = new No(-1);
+        this.last = new No(-1);
+        this.size = 0;
     }
-
+    
     int getSize() {
-        return size;
+        return this.size;
     }
-
+    
     boolean isEmpty() {
         return size == 0;
     }
-
-    void insert(int value) {
-        No newNo = new No();
-        newNo.setNoValor(value);
-
+    
+    void queue(int value) {
+        No newNo = new No(value);
+        
         if(isEmpty()) {
-            first.setNoProximo(newNo);
-            last.setNoProximo(newNo);
+            this.first.setNoProximo(newNo);
+            this.last.setNoProximo(newNo);
         } else {
-            last.getNoProximo().setNoProximo(newNo);
-            last.setNoProximo(newNo);
+            this.last.getNoProximo().setNoProximo(newNo);
+            this.last.setNoProximo(newNo);
         }
-        size++;
+        
+        this.size++;
     }
-
-    int remove() {
-        if(!isEmpty()) {
-            No response = first.getNoProximo();
-            first.setNoProximo(response.getNoProximo());
-            size--;
-            return response.getNoValor();
-        } else {
-            System.out.println("Fila vazia");
-            return -1;
+    
+    int dequeue() throws Exception {
+        if(isEmpty()) {
+            throw new Exception("Fila vazia");
         }
+        
+        No aux = first.getNoProximo();
+        
+        first.setNoProximo(aux.getNoProximo());
+        return aux.getValor();
     }
 }

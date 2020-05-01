@@ -5,28 +5,29 @@ package com.estruturadados.queue;
  * @author hagan
  */
 public class No {
-
+    
+    /*valor que vai receber o nó*/
     int valor;
+    
+    /*Nó a ser encadeado*/
     No proximo;
-
-    void crate(int novoValor){
-        this.valor = novoValor;
+    
+    /*construtor do Nó*/
+    public No(int valor){
+        /*ao ser construído não existe nó encadeado*/
+        this.proximo = null;
+        this.valor = valor;
     }
-
-    int getNoValor(){
-        return valor;
+    
+    int getValor() {
+        return this.valor;
     }
-
-    void setNoValor(int novoValor){
-        this.valor = novoValor;
-    }
-
-    No getNoProximo(){
+    
+    No getNoProximo() {
         return this.proximo;
     }
-
-    void setNoProximo(No newNext){
-        this.proximo = newNext;
+    
+    void setNoProximo(No novoNo) {
+        this.proximo = novoNo;
     }
 }
-

@@ -13,16 +13,25 @@ import java.util.Scanner;
  */
 public class StackMain {
     public static void main(String args[]){
-        Scanner scan = new Scanner(System.in);
-        
-//        System.out.println("numero");
-//        String formula = scan.nextLine();
-//        boolean response = bemFormada(formula);
-//        System.out.println(response);
+       
+       DinamicStack pilha = new DinamicStack();   
+       pilha.push(5);
+       pilha.push(4);
+       pilha.push(3);
+       pilha.push(2);
+       pilha.push(1);
 
-        System.out.println("numero");
-        int decimal = scan.nextInt();
-        decimalToTinario(decimal);
+       try{
+           
+            int numero  = pilha.pop();
+            System.out.println(numero);
+        }catch (Exception e) {
+            
+            System.out.println(e.getMessage());
+        }
+
+        
+        
         
     }
     
@@ -39,7 +48,36 @@ public class StackMain {
     *  ((()()))
     */
     public static boolean bemFormada(String formula) {
-       StaticStack pilha = new StaticStack(formula.length());
+       StaticStack pilha = new StaticStack(10);
+       try{
+            
+           pilha.push(5);
+           pilha.push(4);
+           pilha.push(3);
+           pilha.push(2);
+           pilha.push(1);
+           
+           StaticStack pilha2 =  pilha;
+           
+           int numero = pilha2.pop();
+           System.out.println(numero);
+            
+       } catch(Exception e) {
+           
+           System.out.println(e.getMessage());
+       }
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
        
        try{
             for(int index = 0; index<formula.length(); index++) {
@@ -47,7 +85,7 @@ public class StackMain {
 
                 if(pos == '(') {
                     pilha.push(1);
-                }
+}
 
                 else if(pos == ')' ) {
                     if(pilha.isEmpty()) return false;
