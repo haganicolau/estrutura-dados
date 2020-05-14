@@ -55,7 +55,7 @@ public class StaticQueue {
         return element;
     }
     
-    int getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
     

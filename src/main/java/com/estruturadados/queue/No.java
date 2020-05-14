@@ -19,15 +19,15 @@ public class No {
         this.valor = valor;
     }
     
-    int getValor() {
+    public int getValor() {
         return this.valor;
     }
     
-    No getNoProximo() {
+    public No getNoProximo() {
         return this.proximo;
     }
     
-    void setNoProximo(No novoNo) {
+    public void setNoProximo(No novoNo) {
         this.proximo = novoNo;
     }
 }

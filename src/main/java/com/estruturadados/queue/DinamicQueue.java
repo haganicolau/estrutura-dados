@@ -12,15 +12,15 @@ public class DinamicQueue {
         this.size = 0;
     }
     
-    int getSize() {
+    public int getSize() {
         return this.size;
     }
     
-    boolean isEmpty() {
+    public boolean isEmpty() {
         return size == 0;
     }
     
-    void queue(int value) {
+    public void queue(int value) {
         No newNo = new No(value);
         
         if(isEmpty()) {
@@ -34,7 +34,7 @@ public class DinamicQueue {
         this.size++;
     }
     
-    int dequeue() throws Exception {
+    public int dequeue() throws Exception {
         if(isEmpty()) {
             throw new Exception("Fila vazia");
         }
