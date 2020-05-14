@@ -42,6 +42,7 @@ public class DinamicQueue {
         No aux = first.getNoProximo();
         
         first.setNoProximo(aux.getNoProximo());
+        this.size--;
         return aux.getValor();
     }
 }

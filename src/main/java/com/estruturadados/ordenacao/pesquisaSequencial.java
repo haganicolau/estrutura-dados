@@ -5,7 +5,7 @@ package com.estruturadados.ordenacao;
  * @author Hagamenon.Oliveira<haganicolau@gmail.com>
  */
 public class pesquisaSequencial {
-    private int v[] = {5,9,8,3,4,6,2,7,0,1};
+    /*private int v[] = {5,9,8,3,4,6,2,7,0,1}; */
     
     /**
      * @description Método de busca sequencial O(n)

@@ -8,28 +8,28 @@ import com.estruturadados.stack.StaticStack;
  */
 public class mainQueu {
     public static void main(String args[]){
-       StaticQueue f1 = new StaticQueue(5);
-       
-       try{
-           
-        f1.queue(0);
+        DinamicQueue f1 = new DinamicQueue();
+        DinamicQueue f2 = new DinamicQueue();
+
         f1.queue(1);
         f1.queue(2);
         f1.queue(3);
         f1.queue(4);
+        f1.queue(5);
         
-        StaticQueue fInvertida = inverterFila(f1);
-        
-        while(!fInvertida.isEmpty()) {
-            int element = fInvertida.dequeue();
-            System.out.println(element);
+        f2.queue(6);
+        f2.queue(7);
+        f2.queue(8);
+
+        DinamicQueue f3 = concatenarFila(f1, f2);
+        try{
+            while(!f3.isEmpty()) {
+                System.out.println(f3.dequeue());
+            }
+        }catch(Exception e) {
+            System.out.println(e.getMessage());
         }
-        
-       }catch(Exception ex) {
-           
-           System.out.println(ex.getMessage());
-       }
-        
+
     }
     
     /* 01 Desenvolva uma função (com parâmetros), para testar se uma fila F1, tem mais
@@ -64,25 +64,52 @@ public class mainQueu {
      * só pode usar as propriedades da fila queue e dequeu. Pode usar uma pilha 
      * auxiliar
      */
-    public static StaticQueue inverterFila(StaticQueue fila) {
-        StaticStack pilha = new StaticStack(fila.getQuantity());
+    // public static StaticQueue inverterFila(StaticQueue fila) {
+    //     StaticStack pilha = new StaticStack(fila.getQuantity());
         
-        try{
-            while(!fila.isEmpty()) {
-                int elemento = fila.dequeue();
-                pilha.push(elemento);
-            }
+    //     try{
+    //         while(!fila.isEmpty()) {
+    //             int elemento = fila.dequeue();
+    //             pilha.push(elemento);
+    //         }
 
-            while(!pilha.isEmpty()) {
-                int elemento = pilha.pop();
-                fila.queue(elemento);
-            }
-        }catch(Exception e) {
-            System.out.println(e.getMessage());
-        }
+    //         while(!pilha.isEmpty()) {
+    //             int elemento = pilha.pop();
+    //             fila.queue(elemento);
+    //         }
+    //     }catch(Exception e) {
+    //         System.out.println(e.getMessage());
+    //     }
         
-        return fila;
+    //     return fila;
+    // }
+
+
+    /** 07. Crie uma função que ao receber duas filas dinâmicas, ela concatene,
+     * coloque uma fila na frente da outra e retorne uma única fila resultante
+     * 
+     * */
+    public static DinamicQueue concatenarFila(DinamicQueue f1, DinamicQueue f2) {
+        DinamicQueue f3 = new DinamicQueue();
+
+        try {
+            while(!f1.isEmpty()) {
+                f3.queue(f1.dequeue());
+            }
+        } catch(Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        try {
+            while(!f2.isEmpty()) {
+                f3.queue(f2.dequeue());
+            }
+        } catch(Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return f3;
     }
-    
+   
     
 }

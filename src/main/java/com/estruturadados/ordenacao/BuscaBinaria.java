@@ -5,7 +5,7 @@ package com.estruturadados.ordenacao;
  * @author Hagamenon.Oliveira<haganicolau@gmail.com>
  */
 public class BuscaBinaria {
-    private final int v[] = {4,7,8,10,14,21,22,36,62,77,81,91};
+    /*private final int v[] = {4,7,8,10,14,21,22,36,62,77,81,91}; */
 
     /**
      * @description Método de busca binária O(logn)

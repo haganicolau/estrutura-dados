@@ -51,9 +51,9 @@ public class StaticStack {
             System.out.println("Pilha vazia");
             throw new Exception("Pilha Vazia");
         } else {
-            int number = stack[top];
+            int numero = stack[top];
             top--;
-            return number;
+            return numero;
         }
     }
 

@@ -18,7 +18,7 @@ public class StaticQueue {
         this.quantity = 0;
     }
     
-    boolean isEmpty() {
+    public boolean isEmpty() {
         return this.quantity == 0;
     }
     
@@ -26,7 +26,7 @@ public class StaticQueue {
         return this.quantity == this.queue.length;
     }
     
-    void queue(int element) throws Exception {
+    public void queue(int element) throws Exception {
         if(isFull()) {
             throw new Exception("Fila cheia");
         } 
@@ -39,7 +39,7 @@ public class StaticQueue {
         quantity++;
     }
     
-    int dequeue() throws Exception{
+    public int dequeue() throws Exception{
         if(isEmpty()) {
             throw new Exception("Fila vazia");
         }

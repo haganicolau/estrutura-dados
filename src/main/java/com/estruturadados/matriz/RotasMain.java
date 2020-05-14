@@ -48,5 +48,6 @@ public class RotasMain {
             
             System.out.println(ex.getMessage());
         }
+        scan.close();
     }
 }
