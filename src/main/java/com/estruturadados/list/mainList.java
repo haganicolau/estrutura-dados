@@ -11,8 +11,7 @@ public class mainList {
         list.insert(133);
 
         try{
-            int valor = list.remove();
-            System.out.println(valor);
+            list.list();
         } catch(Exception ex) {
             System.out.println(ex.getMessage());
         }

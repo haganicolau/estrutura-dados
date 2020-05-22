@@ -32,7 +32,6 @@ public class DinamicList {
     }
 
     public void insertNo(No aux, No newNo) {
-
         while(aux.proximo != null) {
             aux = aux.getNoProximo();
         }
@@ -51,5 +50,28 @@ public class DinamicList {
         this.start = aux.getNoProximo();
         this.size--;
         return value;
+    }
+
+    public void list() throws Exception { 
+        if(isEmpty()) {
+            throw new Exception("Lista vazia");
+        } 
+        
+        No aux = this.start;
+
+        // for(int contador = 0; contador < this.size; contador++) {
+        //     System.out.println("Elemento: " + aux.getValor());
+        //     aux = aux.getNoProximo();
+        // }
+
+        // do {
+        //     System.out.println("Elemento: " + aux.getValor());
+        //     aux = aux.getNoProximo();
+        // } while(aux != null);
+
+        while(aux.proximo != null) { 
+            System.out.println("Elemento: " + aux.getValor());
+            aux = aux.getNoProximo();
+        }
     }
 }
