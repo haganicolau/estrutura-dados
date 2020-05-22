@@ -69,7 +69,7 @@ public class DinamicList {
         //     aux = aux.getNoProximo();
         // } while(aux != null);
 
-        while(aux.proximo != null) { 
+        while(aux != null) { 
             System.out.println("Elemento: " + aux.getValor());
             aux = aux.getNoProximo();
         }
