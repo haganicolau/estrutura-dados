@@ -74,4 +74,82 @@ public class DinamicList {
             aux = aux.getNoProximo();
         }
     }
+
+    public boolean isGrowing() {
+        No aux = this.start;
+
+        if(getSize() == 1) {
+            return true;
+        }
+
+        while(aux.getNoProximo() != null) {
+            if(aux.getValor() > aux.getNoProximo().getValor()) {
+                return false;
+            } 
+            aux = aux.getNoProximo();
+        }
+        return true;
+    }
+
+    public int min() {
+        No aux = this.start;
+
+        if(getSize() == 1) {
+            return aux.getValor();
+        }
+        int menor = aux.getValor();
+
+        while(aux.getNoProximo() != null) {
+            if(menor < aux.getNoProximo().getValor()) {
+                menor = aux.getNoProximo().getValor();
+            }
+            aux = aux.getNoProximo();
+        }
+
+        return menor;
+
+    }
+
+    public int altura(int value) throws Exception {
+        int altura = 0;
+        No aux = this.start;
+        boolean found = false;
+
+        while(aux != null) {
+            if(aux.getValor() == value) {
+                found = true;
+            } 
+            if(found)
+                altura++;
+
+            aux = aux.getNoProximo();
+        }
+
+        if(!found) {
+            throw new Exception("Valor não encontrado");
+        }
+        return altura;
+    }
+
+    public int profundidade(int value) throws Exception {
+        int profundidade = 0;
+
+        No aux = this.start;
+        boolean found = false;
+
+        while(aux != null) {
+            profundidade++;
+            if(aux.getValor() == value) {
+                found = true;
+                break;
+            }
+            aux = aux.getNoProximo();
+        }
+
+        if(!found)
+            throw new Exception("Valor não encontrado na lista");
+        
+        return profundidade;
+    }
+
 }
