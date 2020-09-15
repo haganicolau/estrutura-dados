@@ -1,21 +1,21 @@
 package com.estruturadados.stack;
 
-public class StaticStack {
+public class StaticStackChar {
     /******************************
-    * CARACTERÍSTICAS DA PILHA
-    * *******************************/
+     * CARACTERÍSTICAS DA PILHA
+     * *******************************/
 
     /** REPRESENTA O TOPO DA PILHA */
     private int top;
 
     /** ESTRUTURA ESTÁTICA DE PILHA*/
-    private int stack[];
+    private char stack[];
 
     /** TAMANHO MÁXIMO DA PILHA*/
     private int size;
 
-    public StaticStack(int size) {
-        this.stack = new int[size];
+    public StaticStackChar(int size) {
+        this.stack = new char[size];
         this.top = -1;
         this.size = size;
     }
@@ -32,7 +32,7 @@ public class StaticStack {
         return this.size;
     }
 
-    public int peek() {
+    public char peek() {
         if(isEmpty()) {
             System.out.println("Pilha vazia não é possível retornar o topo");
             return 0;
@@ -40,7 +40,7 @@ public class StaticStack {
         return this.stack[this.top];
     }
 
-    public void push(int value) {
+    public void push(char value) {
         if(isFull()) {
             System.out.println("Pilha cheia! não é possível empilhar novo ítem");
             return;
@@ -49,13 +49,14 @@ public class StaticStack {
         this.stack[this.top] = value;
     }
 
-    public int pop() {
+    public char pop() {
         if(isEmpty()) {
             System.out.println("Pilha vazia, não é possível desempilhar");
-            return -1;
+            char response = 0;
+            return response;
         }
-        int numero = this.stack[this.top];
+        char letra = this.stack[this.top];
         this.top--;
-        return numero;
+        return letra;
     }
 }

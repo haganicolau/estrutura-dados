@@ -1,7 +1,5 @@
 package com.estruturadados.queue;
 
-import com.estruturadados.stack.StaticStack;
-
 /**
  *
  * @author hagan

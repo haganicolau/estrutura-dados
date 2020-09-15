@@ -19,8 +19,8 @@ public class MergeSort {
     public static void sort(int v[], int w[], int inicio, int fim) {
         if (inicio < fim) {
             int meio = (inicio + fim) / 2;
-            mergeSort(v, w, inicio, meio);
-            mergeSort(v, w, meio + 1, fim);
+            sort(v, w, inicio, meio);
+            sort(v, w, meio + 1, fim);
             intercalar(v, w, inicio, meio, fim);
         }
     }
@@ -32,7 +32,7 @@ public class MergeSort {
      * @return void 
      */
     public static void intercalar(int v[], int w[], int inicio, int meio, int fim) {
-        contador++;
+
         /*cópia do vetor*/
         for (int k = inicio; k <= fim; k++){
             w[k] = v[k];
