@@ -3,24 +3,25 @@ package com.estruturadados.queue;
 import com.estruturadados.queue.exception.DequeuException;
 import com.estruturadados.queue.exception.EnqueueException;
 
-public class StaticQueue {
-
+public class StaticCircularQueue {
     private int queue[];
     private int first;
     private int last;
+    private int quantity;
 
-    public StaticQueue(int size) {
+    public StaticCircularQueue(int size) {
         this.queue = new int[size];
-        this.last = -1;
         this.first = 0;
+        this.last = -1;
+        this.quantity = 0;
     }
 
     public boolean isEmpty() {
-        return this.last == -1;
+        return quantity == 0;
     }
 
     public boolean isFull() {
-        return this.last == length() -1;
+        return quantity == length();
     }
 
     public int length() {
@@ -33,7 +34,11 @@ public class StaticQueue {
         }
 
         this.last++;
+        if(this.last == length()) {
+            this.last = 0;
+        }
         this.queue[this.last] = element;
+        this.quantity++;
     }
 
     public int dequeue() throws DequeuException {
@@ -42,18 +47,13 @@ public class StaticQueue {
         }
 
         int element = this.queue[this.first];
-        arrangement();
-        this.last--;
+        this.first++;
+        if(this.first == length()) {
+            this.first = 0;
+        }
+        this.quantity--;
         return element;
     }
-
-    public void arrangement() {
-        for(int position = this.first; position < this.last; position++) {
-            this.queue[position] = this.queue[position + 1];
-        }
-    }
-
-
 
 
 

@@ -1,5 +1,8 @@
 package com.estruturadados.stack;
 
+import com.estruturadados.stack.exception.PopException;
+import com.estruturadados.stack.exception.PushException;
+
 public class StaticStack {
     /******************************
     * CARACTERÍSTICAS DA PILHA
@@ -40,19 +43,17 @@ public class StaticStack {
         return this.stack[this.top];
     }
 
-    public void push(int value) {
+    public void push(int value) throws PushException {
         if(isFull()) {
-            System.out.println("Pilha cheia! não é possível empilhar novo ítem");
-            return;
+            throw new PushException();
         }
         this.top++;
         this.stack[this.top] = value;
     }
 
-    public int pop() {
+    public int pop() throws PopException {
         if(isEmpty()) {
-            System.out.println("Pilha vazia, não é possível desempilhar");
-            return -1;
+            throw new PopException();
         }
         int numero = this.stack[this.top];
         this.top--;

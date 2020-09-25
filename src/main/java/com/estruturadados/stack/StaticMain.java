@@ -1,5 +1,8 @@
 package com.estruturadados.stack;
 
+import com.estruturadados.stack.exception.PopException;
+import com.estruturadados.stack.exception.PushException;
+
 import java.util.Scanner;
 
 public class StaticMain {
@@ -33,14 +36,24 @@ public class StaticMain {
          * */
         StaticStack stack = new StaticStack(10);
         Scanner scan = new Scanner(System.in);
-        for(int contador = 0; contador < 10; contador++) {
-            System.out.println("Informe o elemento: ");
-            stack.push(scan.nextInt());
+
+        try {
+            for (int contador = 0; contador < 10; contador++) {
+                System.out.println("Informe o elemento: ");
+                stack.push(scan.nextInt());
+            }
+        } catch (PushException pushException) {
+            System.out.println(pushException.getMessage());
         }
+
         System.out.println("Elemento do topo: " + stack.peek());
 
-        while(!stack.isEmpty()) {
-            System.out.println(stack.pop());
+        try {
+            while (!stack.isEmpty()) {
+                System.out.println(stack.pop());
+            }
+        } catch (PopException popException) {
+            System.out.println(popException.getMessage());
         }
     }
 
@@ -53,39 +66,68 @@ public class StaticMain {
         Scanner scan = new Scanner(System.in);
         for(int contador = 0; contador < 15; contador++) {
             System.out.println("Informe o elemento: ");
-            stack.push(scan.nextInt());
+            try {
+                stack.push(scan.nextInt());
+            } catch (PushException pushException) {
+                System.out.println(pushException.getMessage());
+                break;
+            }
         }
         int soma = 0;
-        while(!stack.isEmpty()) {
-            int aux = stack.pop();
-            if(aux%2 == 0) {
-                soma = soma + aux;
+        try {
+            while(!stack.isEmpty()) {
+                int aux = stack.pop();
+                if(aux%2 == 0) {
+                    soma = soma + aux;
+                }
             }
+        } catch (PopException popException) {
+            System.out.println(popException.getMessage());
         }
         System.out.println("valor da soma: " + soma);
     }
 
     public static boolean exercicioExtra03(StaticStack pilha) {
-        int topo = pilha.pop();
-        while(!pilha.isEmpty()) {
-            if(pilha.pop() > topo) {
-                return false;
+        try {
+            int topo = pilha.pop();
+            while (!pilha.isEmpty()) {
+                if (pilha.pop() > topo) {
+                    return false;
+                }
             }
+            return true;
+        } catch (PopException popException) {
+            System.out.println(popException.getMessage());
+            return false;
         }
-        return true;
     }
 
     public static boolean exercicioExtra04(StaticStack pilha) {
         int maiorElemento = 0;
         StaticStack stackAux = new StaticStack(pilha.length());
         for(int contador  = 0; contador < pilha.length(); contador++) {
-            stackAux.push(pilha.pop());
+            try {
+                stackAux.push(pilha.pop());
+            } catch (PushException pushException) {
+                System.out.println(pushException.getMessage());
+                break;
+            } catch (PopException popException) {
+                System.out.println(popException.getMessage());
+            }
             if(stackAux.peek() > maiorElemento || contador == 0) {
                 maiorElemento = stackAux.peek();
             }
         }
         for(int contador  = 0; contador < stackAux.length(); contador++) {
-            pilha.push(stackAux.pop());
+            try {
+                pilha.push(stackAux.pop());
+            } catch (PushException pushException) {
+                System.out.println(pushException.getMessage());
+                break;
+            } catch (PopException popException) {
+                System.out.println(popException.getMessage());
+                break;
+            }
         }
 
         return pilha.peek() == maiorElemento;
