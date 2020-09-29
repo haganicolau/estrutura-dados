@@ -6,7 +6,7 @@ package com.estruturadados.matriz;
  */
 public class Rotas {
 
-    int mapa[][];
+    private int mapa[][];
 
     public Rotas() {
         this.mapa = new int[6][6];
@@ -80,10 +80,13 @@ public class Rotas {
         int destinoFinal = 0;
         for(int origemAux = 0; origemAux < 6; origemAux++) {
 
-            if(mapa[origemAux][destino] == 0 || mapa[origemAux][destino] == -1) {
+            if(this.mapa[origemAux][destino] == 0
+                || this.mapa[origemAux][destino] == -1
+                || this.mapa[origem][origemAux] == 0
+            ) {
                 continue;
             }
-            destinoFinal =  mapa[origem][origemAux] + mapa[origemAux][destino];
+            destinoFinal =  this.mapa[origem][origemAux] + this.mapa[origemAux][destino];
         }
         return destinoFinal;
     }
