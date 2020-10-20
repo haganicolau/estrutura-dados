@@ -1,47 +1,48 @@
 package com.estruturadados.queue;
 
+import com.estruturadados.queue.exception.DequeueException;
+import com.estruturadados.stack.DinamicStack;
+
 public class DinamicQueue {
-    
-    No first;
-    No last;
-    int size;
-    
+    private No first;
+    private No last;
+    private int size;
+
     public DinamicQueue() {
         this.first = new No(-1);
         this.last = new No(-1);
         this.size = 0;
     }
-    
+
     public int getSize() {
         return this.size;
     }
-    
+
     public boolean isEmpty() {
-        return size == 0;
+        return this.size == 0;
     }
-    
-    public void queue(int value) {
+
+    public void enqueue(int value) {
         No newNo = new No(value);
-        
+
         if(isEmpty()) {
-            this.first.setNoProximo(newNo);
             this.last.setNoProximo(newNo);
+            this.first.setNoProximo(newNo);
         } else {
             this.last.getNoProximo().setNoProximo(newNo);
             this.last.setNoProximo(newNo);
         }
-        
+
         this.size++;
     }
-    
-    public int dequeue() throws Exception {
+
+    public int dequeue() throws DequeueException {
         if(isEmpty()) {
-            throw new Exception("Fila vazia");
+            throw new DequeueException();
         }
-        
-        No aux = first.getNoProximo();
-        
-        first.setNoProximo(aux.getNoProximo());
+
+        No aux = this.first.getNoProximo();
+        this.first.setNoProximo(aux.getNoProximo());
         this.size--;
         return aux.getValor();
     }
