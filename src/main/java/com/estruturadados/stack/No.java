@@ -1,34 +1,27 @@
-
 package com.estruturadados.stack;
 
-/*
- * @author Hagamenon.Oliveira <hagamenon.oliveira@soluti.com.br>
- * @Description Estrutura básica que será encadeada
- */
 public class No {
 
-    /*valor que vai receber o nó*/
-    int valor;
+    /*valor a ser manipulado*/
+    private int valor;
 
-    /*Nó a ser encadeado*/
-    No proximo;
+    /*No que recebe a referênciad o próximo nó*/
+    private No noProximo;
 
-    /*construtor do Nó*/
-    public No(int valor){
-        /*ao ser construído não existe nó encadeado*/
-        this.proximo = null;
+    public No(int valor) {
         this.valor = valor;
+        this.noProximo = null;
     }
 
-    int getValor() {
-        return this.valor;
+    public int getValor() {
+        return valor;
     }
 
-    No getNoProximo() {
-        return this.proximo;
+    public No getNoProximo() {
+        return noProximo;
     }
 
-    void setNoProximo(No novoNo) {
-        this.proximo = novoNo;
+    public void setNoProximo(No noProximo) {
+        this.noProximo = noProximo;
     }
 }

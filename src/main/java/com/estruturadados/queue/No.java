@@ -2,18 +2,22 @@ package com.estruturadados.queue;
 
 public class No {
     /*valor que vai receber o nó*/
-    private int valor;
+    int valor;
 
-    /*Referência do próximo nó*/
+    /*referência ao próximo nó*/
     private No noProximo;
 
-    public No(int valor) {
+    public No(Integer value) {
+        this.valor = value;
         this.noProximo = null;
-        this.valor = valor;
     }
 
     public int getValor() {
         return valor;
+    }
+
+    public void setValor(int valor) {
+        this.valor = valor;
     }
 
     public No getNoProximo() {

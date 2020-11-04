@@ -1,36 +1,30 @@
 package com.estruturadados.list;
 
-/**
- *
- * @author hagan
- */
 public class No {
-    
-    /*valor que vai receber o nó*/
+    /*valor que será manipulador*/
     int valor;
-    
-    /*Nó a ser encadeado*/
-    No proximo;
-    
-    /*construtor do Nó*/
-    public No(){
-        /*ao ser construído não existe nó encadeado*/
-        this.proximo = null;
+
+    /*referência ao próximo nó*/
+    private No noProximo;
+
+    public No(int value) {
+        this.valor = value;
+        this.noProximo = null;
     }
-    
+
     public int getValor() {
-        return this.valor;
+        return valor;
     }
 
     public void setValor(int valor) {
         this.valor = valor;
     }
-    
+
     public No getNoProximo() {
-        return this.proximo;
+        return noProximo;
     }
-    
-    public void setNoProximo(No novoNo) {
-        this.proximo = novoNo;
+
+    public void setNoProximo(No noProximo) {
+        this.noProximo = noProximo;
     }
 }
