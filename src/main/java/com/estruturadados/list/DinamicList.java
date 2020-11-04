@@ -63,4 +63,8 @@ public class DinamicList {
             aux = aux.getNoProximo();
         }
     }
+
+    public int getSize() {
+        return this.size;
+    }
 }
