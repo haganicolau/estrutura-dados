@@ -4,8 +4,17 @@ public class No {
     /*valor que será manipulador*/
     int valor;
 
-    /*referência ao próximo nó*/
+    /*
+    * referência ao próximo nó
+    * cor: vermelho
+    * */
     private No noProximo;
+
+    /*
+    * referência ao nó anterior
+    * cor: azul
+    * */
+    private No noAnterior;
 
     public No(int value) {
         this.valor = value;
@@ -26,5 +35,13 @@ public class No {
 
     public void setNoProximo(No noProximo) {
         this.noProximo = noProximo;
+    }
+
+    public No getNoAnterior() {
+        return noAnterior;
+    }
+
+    public void setNoAnterior(No noAnterior) {
+        this.noAnterior = noAnterior;
     }
 }
