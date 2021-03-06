@@ -30,5 +30,5 @@ public class BubleSort {
         }
         System.out.print("];");
     }
-    
+
 }
