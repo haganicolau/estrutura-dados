@@ -8,6 +8,13 @@ import java.util.Arrays;
  */
 public class ShellSort {
 
+    public static void main(String [] args) {
+        int vetor[] = {7,2,9,4,3,8,6,1,5};
+        int vetorOrdenado[] = sort(vetor);
+
+        printarVetor(vetor);
+    }
+
     /**
      * @description Método shell sort O(n^2)
      * @author Hagamenon Oliveira <haganicolau@gmail.com>
@@ -33,5 +40,14 @@ public class ShellSort {
         }
         
        return v;
+    }
+
+    public static void printarVetor(int vetor[]) {
+        System.out.print("vetor [ ");
+        for(int i = 0; i < vetor.length; i++) {
+            System.out.print(vetor[i]+" ");
+        }
+        System.out.print("];");
+        System.out.println("");
     }
 }

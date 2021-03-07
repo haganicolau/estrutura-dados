@@ -7,41 +7,61 @@ import java.util.Arrays;
  * @author Hagamenon.Oliveira<haganicolau@gmail.com>
  */
 public class QuickSort {
-    
-    /**
-     * @description Método recursivo, que a partir de um pivô vai quebrando o array
-     * criando uma complexidade O(logn)
-     * @author Hagamenon Oliveira <haganicolau@gmail.com>
-     * @return int [] - vetor ordenado
-     */
-//    private static int[] sort(int[] v, int inicio, int fim) {
-//
-//        int i = inicio;
-//        int j = fim;
-//        int pivo = v[(inicio + fim)/2];
-//
-//        while(i <= j) {
-//            if(v[i] < pivo) i++;
-//            else if(v[j] > pivo) j--;
-//            else if(i <= j) {
-//                trocar(v,i,j);
-//                i++;
-//                j--;
-//            }
-//        }
-//
-//        if(inicio < j)
-//            sort(v, inicio, j);
-//
-//        if(i < fim)
-//            sort(v, i, fim);
-//
-//        return i;
-//    }
 
-    private static void trocar(int[] v, int i, int j) {
-        int aux = v[i];
-        v[i] = v[j];
-        v[j] =  aux;
+    public static void main(String[] args) {
+        int vetor[] = {7,2,9,4,3,8,6,1,5};
+
+        sort(vetor, 0, vetor.length - 1);
+        printarVetor(vetor);
+    }
+    
+    private static void sort(int vetor[], int inicio, int fim) {
+        if (inicio < fim) {
+               int posicaoPivo = separar(vetor, inicio, fim);
+               sort(vetor, inicio, posicaoPivo - 1);
+               sort(vetor, posicaoPivo + 1, fim);
+        }
+    }
+
+    private static int separar(int[] vetor, int inicio, int fim) {
+        int pivo = vetor[inicio];
+        int pontaEsq = inicio + 1, pontaDir = fim;
+        
+        while (pontaEsq <= pontaDir) {
+        /* Vai correr o vetor ate que ultrapasse o outro ponteiro
+        ou ate que o elemento em questão seja menor que o pivô. */
+
+
+            if (vetor[pontaEsq] <= pivo)
+                    pontaEsq++;
+            
+            else if (vetor[pontaDir] > pivo)
+                    pontaDir--;
+            
+            else {
+                troca(vetor, pontaEsq, pontaDir);
+            }
+        }
+
+        vetor[inicio] = vetor[pontaDir];
+        vetor[pontaDir] = pivo;
+        return pontaDir;
+  }
+
+  public static void troca(int vetor[], int pontaEsq, int pontaDir) {
+    int troca = vetor[pontaEsq];
+    vetor[pontaEsq] = vetor[pontaDir];
+    vetor[pontaDir] = troca;
+    pontaEsq++;
+    pontaDir--;
+  }
+
+  public static void printarVetor(int vetor[]) {
+        System.out.print("vetor [ ");
+        for(int i = 0; i < vetor.length; i++) {
+            System.out.print(vetor[i]+" ");
+        }
+        System.out.print("];");
+        System.out.println("");
     }
 }
