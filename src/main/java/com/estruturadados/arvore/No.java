@@ -1,50 +1,39 @@
 package com.estruturadados.arvore;
 
-/**
-* @description classe nó da árvore binária
-* @author Hagamenon.Oliveira <haganicolau@gmail.com>
-* @version 1
-*/
 public class No {
-    private float valor;
-    private No esquerdo;
-    private No direito;
-    private int fb;
-    
-    public No() {
-        this.valor = 0;
-        this.fb = 0;
+
+    int valor;
+    No esquerdo;
+    No direito;
+
+
+    public No(int valor) {
+        this.valor = valor;
+        this.esquerdo = null;
+        this.direito = null;
     }
 
-    public float getValor() {
-        return valor;
+    public int getValor() {
+        return this.valor;
     }
 
-    public void setValor(float valor) {
+    public void setValor(int valor) {
         this.valor = valor;
     }
 
-    public No getEsquerdo() {
-        return esquerdo;
+    public void setEsquerdo(No no) {
+        this.esquerdo = no;
     }
 
-    public void setEsquerdo(No esquerdo) {
-        this.esquerdo = esquerdo;
+    public No getEsquerdo() {
+        return this.esquerdo;
     }
+
+    public void setDireito(No no) {
+        this.direito = no;
+    } 
 
     public No getDireito() {
-        return direito;
-    }
-
-    public void setDireito(No direito) {
-        this.direito = direito;
-    }
-
-    public int getFb() {
-        return fb;
-    }
-
-    public void setFb(int fb) {
-        this.fb = fb;
+        return this.direito;
     }
 }

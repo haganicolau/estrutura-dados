@@ -8,7 +8,7 @@ import javax.tools.Diagnostic;
  */
 public class QuickSort {
     public static void main(String[] args) {
-        int vetor[] = {7,2,9,4,3,0,8,6,1,5};
+        int vetor[] = {6,9,2,8,3,4,1,0,5};
 
         sort(vetor, 0, vetor.length - 1);
         printarVetor(vetor);

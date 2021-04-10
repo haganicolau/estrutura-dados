@@ -3,19 +3,21 @@ package com.estruturadados.busca;
 public class PesquisaSequencial {
     
     public static void main(String [] args) {
-        int array[] = {4,5,8,10,11,56,88,1,6,89,0,111,81,7,9};
-        int posicao = sentinelSearch(array, 9);
+        int array[] = {24,25,26,27,28,32,33,34,35,40,41,42,43,47,49,51,59,60,67};
+        int posicao = simpleSearch(array, 35);
 
         System.out.println("Posição: " + posicao);
     }
 
     public static int simpleSearch(int array[], int value) {
         int index = 0;
+        int comparacoes = 0;
 
         while((array[index] != value) && index < array.length) {
+            comparacoes++;
             index++;
         }
-
+        System.out.println("comparacoes: " +comparacoes );
         return index;
     }
 
