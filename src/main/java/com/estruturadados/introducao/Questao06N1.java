@@ -17,6 +17,15 @@ public class Questao06N1 {
         System.out.println(index);
     }
 
+    /**
+     * @description Busca o maior elemento de forma recursiva, quando encontrar o maior
+     * a cada iteração, substitui. 
+     * @author Hagamenon Oliveira <haganicolau@gmail.com>
+     * @param array [] - vetor a ser buscado
+     * @param int index - posição a ser incrementada 
+     * @param int greater - maior elemento a ser comparado a cada iteração 
+     * @return int maior encontrado
+     */
     public static int seekGreater(int[] array, int index, int greater){
 
         if(array[index] > greater) {
@@ -31,6 +40,15 @@ public class Questao06N1 {
         
     }
 
+    /**
+     * @description Busca o menor elemento de forma recursiva, quando encontrar o menor
+     * a cada iteração, substitui. 
+     * @author Hagamenon Oliveira <haganicolau@gmail.com>
+     * @param array [] - vetor a ser buscado
+     * @param int index - posição a ser incrementada 
+     * @param int less - menor elemento a ser comparado a cada iteração 
+     * @return int menor encontrado
+     */
     public static int seekLess(int[] array, int index, int less) {
         if(array[index] < less) {
             less = array[index];
@@ -43,26 +61,39 @@ public class Questao06N1 {
         return seekLess(array, index+1, less);
     }
 
+    /**
+     * @description Insere o sentinela
+     * @author Hagamenon Oliveira <haganicolau@gmail.com>
+     * @param array [] - vetor a ser buscado
+     * @param int value - int valor a ser buscado
+     * @return int[] array com sentinela
+     */
+    public static int[] insertSentinel(int[] array, int value) {
+        int aux[] = new int[array.length + 1];
 
-    public static int[] insertSentinel(int[] vetor, int value) {
-        int aux[] = new int[vetor.length + 1];
-
-        for(int index = 0; index < vetor.length; index++) {
-            aux[index] = vetor[index];
+        for(int index = 0; index < array.length; index++) {
+            aux[index] = array[index];
         }
         aux[aux.length - 1] = value;
         
         return aux;
     }
 
-
-    public static int sentinelSearch(int vetor[], int value, int index) {
+    /**
+     * @description Insere o sentinela
+     * @author Hagamenon Oliveira <haganicolau@gmail.com>
+     * @param array [] - vetor a ser buscado
+     * @param int value - int valor a ser buscado
+     * @param int index - posição a ser incrementada 
+     * @return int[] array com sentinela
+     */
+    public static int sentinelSearch(int array[], int value, int index) {
         
-        if(value == vetor[index]) {
+        if(value == array[index]) {
             return index;
         }
 
-        return sentinelSearch(vetor, value, index+1);
+        return sentinelSearch(array, value, index+1);
     }
 }
 
