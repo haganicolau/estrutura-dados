@@ -2,10 +2,9 @@ package com.estruturadados.arvore;
 
 public class No {
 
-    int valor;
-    No esquerdo;
-    No direito;
-
+    private No esquerdo; //left
+    private No direito; //right
+    private int valor;
 
     public No(int valor) {
         this.valor = valor;
@@ -13,12 +12,12 @@ public class No {
         this.direito = null;
     }
 
-    public int getValor() {
-        return this.valor;
-    }
-
     public void setValor(int valor) {
         this.valor = valor;
+    }
+
+    public int getValor() {
+        return this.valor;
     }
 
     public void setEsquerdo(No no) {
@@ -31,9 +30,10 @@ public class No {
 
     public void setDireito(No no) {
         this.direito = no;
-    } 
+    }
 
     public No getDireito() {
         return this.direito;
     }
+  
 }

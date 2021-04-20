@@ -1,8 +1,8 @@
 package com.estruturadados.arvore;
 
-public class ArvoreBinaria extends ArvoreAbstract {
+public class ArvoreAVL extends ArvoreAbstract {
 
-    public ArvoreBinaria(int valor) {
+    public ArvoreAVL(int valor) {
         super(valor);
     }
 
@@ -16,7 +16,10 @@ public class ArvoreBinaria extends ArvoreAbstract {
         inserir(this.raiz, valor);
     }
 
+    @Override
     public int remover(int valor) throws Exception {
-        return this.remover(this.raiz, valor);
+        // TODO Auto-generated method stub
+        return 0;
     }
+
 }
