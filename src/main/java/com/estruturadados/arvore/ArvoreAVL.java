@@ -4,7 +4,6 @@ public class ArvoreAVL extends ArvoreAbstract {
 
     private int fb;
 
-
     public ArvoreAVL(int valor) {
         super(valor);
         this.fb = 0;
@@ -32,10 +31,21 @@ public class ArvoreAVL extends ArvoreAbstract {
         return altura(this.raiz);
     }
 
+     /**
+     * @description Método que chama outro método a partir da raiz da árvore 
+     * navegando de forma recursiva visitando todos os nós. 
+     * @author Hagamenon Oliveira <haganicolau@gmail.com>
+     */
     public void calcularFB() {
         calcularFB(this.raiz);
     }
 
+   /**
+     * @description Método que calcula o fator de balanceamento de cada nó, a partir
+     * do valor da altura.
+     * @author Hagamenon Oliveira <haganicolau@gmail.com>
+     * @param no No - nó de forma recursiva
+     */
     public void calcularFB(No no) {
         if(no != null) {
             
@@ -54,6 +64,12 @@ public class ArvoreAVL extends ArvoreAbstract {
         }
     }
 
+    
+    /**
+     * @description Métoo que efetua o balanceamento conforme as regras da AVL
+     * @author Hagamenon Oliveira <haganicolau@gmail.com>
+     * @param no No - nó de forma recursiva
+     */
     public void balancear() {
         this.raiz = balancear(this.raiz);
     }
@@ -128,7 +144,14 @@ public class ArvoreAVL extends ArvoreAbstract {
         return null;
     }
 
-
+    /**
+     * @description rotação dupla a esquerda, neste primeiro passo B e C são
+     * trocados de lugar, para ficarem no mesmo sentido, então é chamado a
+     * rotação simples a esquerda para finalizar o processo de balanceamento
+     * @author Hagamenon Oliveira <haganicolau@gmail.com>
+     * @param A No - nó desbalanceado
+     * @return No - nó balanceado
+     */
     public No rotaocaoDuplaEsquerda(No A) {
         System.out.println("Executando rotação dupla a esquerda, nó " + A.getValor());
 
@@ -145,7 +168,13 @@ public class ArvoreAVL extends ArvoreAbstract {
         return rotacaoSimplesEsquerda(A);
     }
 
-
+    /**
+     * @description rotação simples a esquera, B se torna pai de A e C, e retorna
+     * para ser encaixado na árvore novamente.
+     * @author Hagamenon Oliveira <haganicolau@gmail.com>
+     * @param A No - nó desbalanceado
+     * @return No - nó balanceado
+     */
     public No rotacaoSimplesEsquerda(No A) {
         System.out.println("Executando rotação simples a esquerda, nó " + A.getValor());
 
@@ -162,6 +191,14 @@ public class ArvoreAVL extends ArvoreAbstract {
         return B;
     }
 
+    /**
+     * @description rotação dupla a direita, neste primeiro passo B e C são
+     * trocados de lugar, para ficarem no mesmo sentido, então é chamado a
+     * rotação simples a direita para finalizar o processo de balanceamento
+     * @author Hagamenon Oliveira <haganicolau@gmail.com>
+     * @param A No - nó desbalanceado
+     * @return No - nó balanceado
+     */
     public No rotaocaoDuplaDireita(No A) {
         System.out.println("Executando rotação dupla a direita, nó " + A.getValor());
 
@@ -178,6 +215,13 @@ public class ArvoreAVL extends ArvoreAbstract {
         return rotacaoSimplesDireita(A);
     }
 
+    /**
+     * @description rotação simples a direita, B se torna pai de A e C, e retorna
+     * para ser encaixado na árvore novamente.
+     * @author Hagamenon Oliveira <haganicolau@gmail.com>
+     * @param A No - nó desbalanceado
+     * @return No - nó balanceado
+     */
     public No rotacaoSimplesDireita(No A) {
         System.out.println("Executando rotação simples a direita, nó " + A.getValor());
 
