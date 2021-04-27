@@ -3,9 +3,11 @@ package com.estruturadados.arvore;
 public abstract class ArvoreAbstract {
     
     protected No raiz;
+    protected int altura;
 
     public ArvoreAbstract(int valor) {
         this.raiz = new No(valor);
+        this.altura = 0;
     }
 
     /**
@@ -210,5 +212,33 @@ public abstract class ArvoreAbstract {
         else {
             return removerMaximo(no.getDireito());
         }
+    }
+
+
+    /**
+     * @description Calcula altura a partir da raiz
+     * @author Hagamenon Oliveira <haganicolau@gmail.com>
+     */
+    public abstract int altura();
+    
+    /**
+     * @description Calcula altur a partir do nó
+     * @author Hagamenon Oliveira <haganicolau@gmail.com>
+     * @param no No - No da árvore.
+     */
+    public int altura(No no) {
+        if(no != null) {
+
+            int esq = altura(no.getEsquerdo()) + 1;
+            int dir = altura(no.getDireito()) + 1;
+            int h = esq > dir ? esq : dir;
+            
+            this.altura = h;
+
+
+            return h;
+        }
+
+        return 0;   
     }
 }

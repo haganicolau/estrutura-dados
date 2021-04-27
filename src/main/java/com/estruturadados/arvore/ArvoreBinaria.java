@@ -19,4 +19,8 @@ public class ArvoreBinaria extends ArvoreAbstract {
     public int remover(int valor) throws Exception {
         return this.remover(this.raiz, valor);
     }
+
+    public int altura() {
+        return altura(this.raiz);
+    }
 }
