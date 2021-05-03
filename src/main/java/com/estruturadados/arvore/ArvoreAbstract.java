@@ -79,6 +79,7 @@ public abstract class ArvoreAbstract {
             if(no.getEsquerdo() == null) {
                 No novo = new No(valor);
                 no.setEsquerdo(novo);
+                novo.setPai(no);
             }
 
             else  {
@@ -91,6 +92,7 @@ public abstract class ArvoreAbstract {
             if(no.getDireito() == null) {
                 No novo = new No(valor);
                 no.setDireito(novo);
+                novo.setPai(no);
             }
 
             else {
