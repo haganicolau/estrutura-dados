@@ -1,26 +1,27 @@
 package com.estruturadados.arvore;
 
-public class ArvoreRedBlack extends ArvoreAbstract {
+import com.estruturadados.arvore.No.Valor;
 
-    public ArvoreRedBlack(int valor) {
+public class ArvoreRedBlack <T extends Comparable<T>> extends ArvoreAbstract {
+
+    public ArvoreRedBlack(Valor<T> valor) {
         super(valor);
         this.raiz.setBlackNode();
     }
 
     @Override
-    public void inserir(int valor) {
+    public void inserir(Valor valor) {
         this.inserir(this.raiz, valor);
 
-        /** 
+        /**
          * Validar as propriedades da árvore, se preciso
          * balancear
-        */
+         */
     }
 
     @Override
-    public int remover(int valor) throws Exception {
-        // TODO Auto-generated method stub
-        return 0;
+    public Valor remover(Valor valor) throws Exception {
+        return null;
     }
 
     @Override

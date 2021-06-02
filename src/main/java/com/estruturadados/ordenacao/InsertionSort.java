@@ -13,8 +13,8 @@ public class InsertionSort {
      */
     public static void main(String args[]) {
 
-        int vetor[] = {5,3,2,4,7,1,0,6};
-        int i,j, key;
+        int vetor[] = {20,300,70,5,43,8};
+        int i,j, key, contador = 0;
 
         for(j = 1; j < vetor.length; j++) {
             key = vetor[j];
@@ -22,11 +22,12 @@ public class InsertionSort {
 
             while(i >= 0 && vetor[i] > key) {
                 vetor[i + 1] = vetor[i];
+                contador++;
                 i--;
             }
             vetor[i + 1] = key;
         }
-        
+        System.out.println(contador);
         printarVetor(vetor);
     }
 

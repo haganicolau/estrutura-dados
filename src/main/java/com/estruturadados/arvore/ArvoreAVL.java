@@ -1,10 +1,13 @@
 package com.estruturadados.arvore;
 
-public class ArvoreAVL extends ArvoreAbstract {
+import com.estruturadados.arvore.No.No;
+import com.estruturadados.arvore.No.Valor;
+
+public class ArvoreAVL <T extends Comparable<T>> extends ArvoreAbstract {
 
     private int fb;
 
-    public ArvoreAVL(int valor) {
+    public ArvoreAVL(Valor<T> valor) {
         super(valor);
         this.fb = 0;
     }
@@ -15,16 +18,16 @@ public class ArvoreAVL extends ArvoreAbstract {
      * @author Hagamenon Oliveira <haganicolau@gmail.com>
      * @param valor float - valor a ser inserido na árvore.
      */
-    public void inserir(int valor) {
+    @Override
+    public void inserir(Valor valor) {
         inserir(this.raiz, valor);
         System.out.println("Inserindo o valor: " + valor);
         balancear();
     }
 
     @Override
-    public int remover(int valor) throws Exception {
-        int valorEncontrado = this.remover(this.raiz, valor);
-        return valorEncontrado;
+    public Valor<T> remover(Valor valor) throws Exception {
+        return this.remover(this.raiz, valor);
     }
 
     public int altura() {
@@ -68,13 +71,13 @@ public class ArvoreAVL extends ArvoreAbstract {
     /**
      * @description Métoo que efetua o balanceamento conforme as regras da AVL
      * @author Hagamenon Oliveira <haganicolau@gmail.com>
-     * @param no No - nó de forma recursiva
+//     * @param no No - nó de forma recursiva
      */
     public void balancear() {
         this.raiz = balancear(this.raiz);
     }
 
-    public No balancear(No no) {
+    public No<T> balancear(No<T> no) {
 
         if(no != null) {
 
@@ -85,7 +88,7 @@ public class ArvoreAVL extends ArvoreAbstract {
             no.setDireito(balancear(no.getDireito()));
             calcularFB(no);
 
-            No raiz = no;
+            No<T> raiz = no;
 
             /**
              * No  desbalanceado tendendo para esquerda por isto o fator de desbalanceamento é menor que -1 
@@ -94,7 +97,7 @@ public class ArvoreAVL extends ArvoreAbstract {
             if(no.getFb() < -1) {
                 System.out.println("No " + no.getValor() + " desbalanceado para a esquerda");
 
-                No B = no.getEsquerdo();
+                No<T> B = no.getEsquerdo();
                 
                 /**
                  * Se o filho for na mesma direção do pai executar rotação simples a direita
@@ -119,7 +122,7 @@ public class ArvoreAVL extends ArvoreAbstract {
              */
             if(no.getFb() > 1) {
                 System.out.println("No " + no.getValor() + " desbalanceado para a direita");
-                No B = no.getDireito();
+                No<T> B = no.getDireito();
 
                 /**
                  * Se o filho for na mesma direção do pai executar rotação simples a esquerda
@@ -152,13 +155,13 @@ public class ArvoreAVL extends ArvoreAbstract {
      * @param A No - nó desbalanceado
      * @return No - nó balanceado
      */
-    public No rotaocaoDuplaEsquerda(No A) {
+    public No<T> rotaocaoDuplaEsquerda(No<T> A) {
         System.out.println("Executando rotação dupla a esquerda, nó " + A.getValor());
 
-        No B = A.getDireito();
-        No C = B.getEsquerdo();
-        No D = C.getDireito();
-        No E = B.getDireito();
+        No<T> B = A.getDireito();
+        No<T> C = B.getEsquerdo();
+        No<T> D = C.getDireito();
+        No<T> E = B.getDireito();
 
         A.setDireito(C);
         C.setDireito(B);
@@ -175,13 +178,13 @@ public class ArvoreAVL extends ArvoreAbstract {
      * @param A No - nó desbalanceado
      * @return No - nó balanceado
      */
-    public No rotacaoSimplesEsquerda(No A) {
+    public No<T> rotacaoSimplesEsquerda(No<T> A) {
         System.out.println("Executando rotação simples a esquerda, nó " + A.getValor());
 
-        No B = A.getDireito();
-        No C = B.getDireito();
-        No D = A.getEsquerdo();
-        No E = B.getEsquerdo();
+        No<T> B = A.getDireito();
+        No<T> C = B.getDireito();
+        No<T> D = A.getEsquerdo();
+        No<T> E = B.getEsquerdo();
 
         B.setDireito(C);
         A.setEsquerdo(D);
@@ -199,13 +202,13 @@ public class ArvoreAVL extends ArvoreAbstract {
      * @param A No - nó desbalanceado
      * @return No - nó balanceado
      */
-    public No rotaocaoDuplaDireita(No A) {
+    public No<T> rotaocaoDuplaDireita(No A) {
         System.out.println("Executando rotação dupla a direita, nó " + A.getValor());
 
-        No B = A.getEsquerdo();
-        No C = B.getDireito();
-        No D = C.getEsquerdo();
-        No E = B.getEsquerdo();
+        No<T> B = A.getEsquerdo();
+        No<T> C = B.getDireito();
+        No<T> D = C.getEsquerdo();
+        No<T> E = B.getEsquerdo();
 
         A.setEsquerdo(C);
         C.setEsquerdo(B);
@@ -222,13 +225,13 @@ public class ArvoreAVL extends ArvoreAbstract {
      * @param A No - nó desbalanceado
      * @return No - nó balanceado
      */
-    public No rotacaoSimplesDireita(No A) {
+    public No<T> rotacaoSimplesDireita(No<T> A) {
         System.out.println("Executando rotação simples a direita, nó " + A.getValor());
 
-        No B = A.getEsquerdo();
-        No C = B.getEsquerdo();
-        No D = A.getDireito();
-        No E = B.getDireito();
+        No<T> B = A.getEsquerdo();
+        No<T> C = B.getEsquerdo();
+        No<T> D = A.getDireito();
+        No<T> E = B.getDireito();
 
         B.setEsquerdo(C);
         A.setDireito(D);
@@ -237,5 +240,4 @@ public class ArvoreAVL extends ArvoreAbstract {
 
         return B;
     }
-
 }

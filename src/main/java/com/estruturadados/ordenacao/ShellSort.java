@@ -1,51 +1,38 @@
 package com.estruturadados.ordenacao;
 
-public class Questao06 {
-
-    public static void main(String[] args){
-
-        int vet[] = {2,7,6,1,7,11,4,15,5,0};
-        int menor = buscarMenor(vet, 0, vet.length-1);
-int maior = buscarMaior(vet, 0, vet.length-1);
-
-        System.out.println(menor);
-        System.out.println(maior);
+public class ShellSort {
+    public static void main(String[] args) {
+        int vetor[] = {7, 2, 9, 4, 3, 0, 8, 6, 1, 5};
+        int vetorOrdenado[] = sort(vetor);
+        printarVetor(vetor);
     }
 
-    private static int buscarMenor(int[] vet, int i, int j){
-        if(i == j){
-            return vet[i];
-        }else{
-            int n1, n2;
-            int m;
+    public static int[] sort(int vetor[]) {
+        int h = vetor.length / 2;
+        int key, j, i;
 
-            m = (i + j)/2;
-            n1 = buscarMenor(vet, i, m);
-            n2 = buscarMenor(vet, m + 1, j);
+        while (h > 0) {
+            for (i = h; i < vetor.length; i++) {
+                key = vetor[i];
+                j = i;
 
-            if(n1 < n2){
-                return n1;
-            }else{
-                return n2;
+                while (j >= h && vetor[j - h] > key) {
+                    vetor[j] = vetor[j - h];
+                    j = j - h;
+                }
+                vetor[j] = key;
             }
+            h = h / 2;
         }
+        return vetor;
     }
 
-    private static int buscarMaior(int[] vet, int i, int j){
-        if(i == j){
-            return vet[i];
-        }else{
-            int n1, n2;
-            int m;
-
-            m = (i + j)/2;
-            n1 = buscarMaior(vet, i, m);
-            n2 = buscarMaior(vet, m + 1, j);
-
-            if(n1 > n2){
-                return n1;
-            }else{
-                return n2;
-            }
+    public static void printarVetor(int vetor[]) {
+        System.out.print("vetor [ ");
+        for (int i = 0; i < vetor.length; i++) {
+            System.out.print(vetor[i] + " ");
         }
-    }}
+        System.out.print("]; ");
+        System.out.println(" ");
+    }
+}

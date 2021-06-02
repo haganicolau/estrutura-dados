@@ -1,12 +1,15 @@
 package com.estruturadados.arvore;
 
-public abstract class ArvoreAbstract {
+import com.estruturadados.arvore.No.No;
+import com.estruturadados.arvore.No.Valor;
+
+public abstract class ArvoreAbstract<T extends Comparable<T>> {
     
-    protected No raiz;
+    protected No<T> raiz;
     protected int altura;
 
-    public ArvoreAbstract(int valor) {
-        this.raiz = new No(valor);
+    public ArvoreAbstract(Valor<T> valor) {
+        this.raiz = new No<T>(valor);
         this.altura = 0;
     }
 
@@ -19,7 +22,7 @@ public abstract class ArvoreAbstract {
         preOrdem(this.raiz);
     }
 
-    private void preOrdem(No no) {
+    private void preOrdem(No<T> no) {
         if(no != null) {
             System.out.print(no.getValor() + ", ");
             preOrdem(no.getEsquerdo());
@@ -36,7 +39,7 @@ public abstract class ArvoreAbstract {
         emOrdem(this.raiz);
     }
 
-    private void emOrdem(No no) {
+    private void emOrdem(No<T> no) {
         if(no != null) {
             emOrdem(no.getEsquerdo());
             System.out.print(no.getValor() + ", ");
@@ -54,7 +57,7 @@ public abstract class ArvoreAbstract {
         posOrdem(this.raiz);
     }
 
-    private void posOrdem(No no) {
+    private void posOrdem(No<T> no) {
         if(no != null) {
             posOrdem(no.getEsquerdo());
             posOrdem(no.getDireito());
@@ -62,7 +65,7 @@ public abstract class ArvoreAbstract {
         }
     }
 
-    public abstract void inserir(int valor);
+    public abstract void inserir(Valor<T> valor);
     
     /**
      * @description Método que acontece a sobrecarga de método, e a partir da 
@@ -72,14 +75,13 @@ public abstract class ArvoreAbstract {
      * @param no No - acesso nó recursivo
      * @param valor float - valor a ser inserido na árvore.
      */ 
-    protected void inserir(No no, int valor) {
+    protected void inserir(No<T> no, Valor<T> valor) {
 
-        if(valor < no.getValor()) {
+        if(valor.isSmallerThan(no.getValor())) {
             //esquerda
             if(no.getEsquerdo() == null) {
-                No novo = new No(valor);
+                No<T> novo = new No<T>(valor);
                 no.setEsquerdo(novo);
-                novo.setPai(no);
             }
 
             else  {
@@ -90,9 +92,8 @@ public abstract class ArvoreAbstract {
         else {
             // direita
             if(no.getDireito() == null) {
-                No novo = new No(valor);
+                No<T> novo = new No(valor);
                 no.setDireito(novo);
-                novo.setPai(no);
             }
 
             else {
@@ -101,7 +102,7 @@ public abstract class ArvoreAbstract {
         }
     }
 
-    public abstract int remover(int valor) throws Exception;
+    public abstract Valor<T> remover(Valor<T> valor) throws Exception;
 
     /**
      * @description Método que remove valor em uma arvore binária de busca, 
@@ -115,15 +116,15 @@ public abstract class ArvoreAbstract {
      * @return float - valor a ser removido da árvore 
      * @exception Exception - tratamento caso nó não seja encontrado
      */
-    protected int remover(No no, int valor) throws Exception {
-        
+    protected Valor<T> remover(No<T> no, Valor<T> valor) throws Exception {
+
         /*valor não encontrado*/
         if(no == null) {
             throw new Exception("Valor nao encontrado");
         }
         /*valor maior que o nó, procurar na direita*/
-        else if(valor > no.getValor()) {
-            int response = remover(no.getDireito(), valor);
+        else if(valor.isGreaterThan(no.getValor())) {
+            Valor<T> response = remover(no.getDireito(), valor);
             
             if(no.getDireito().getValor() == valor) {
                 no.setDireito(null);
@@ -131,52 +132,52 @@ public abstract class ArvoreAbstract {
             return response;
         }
         /*valor menor que o nó, procurar na esquerda*/
-        else if(valor < no.getValor()) {
-            int response = remover(no.getEsquerdo(), valor);
-            
+        else if(valor.isSmallerThan(no.getValor())) {
+            Valor<T> response = remover(no.getEsquerdo(), valor);
+
             if(no.getEsquerdo().getValor() == valor) {
                 no.setEsquerdo(null);
             }
             return response;
         }
         /*valor encontrado esquerdo possui um filho*/
-        else if (no.getValor() == valor
-                && no.getEsquerdo() != null 
+        else if (no.getValor().isEquals(valor)
+                && no.getEsquerdo() != null
                 && no.getDireito() == null
         ) {
-            No aux = no.getEsquerdo();
+            No<T> aux = no.getEsquerdo();
             no.setValor(no.getEsquerdo().getValor());
             no.setEsquerdo(null);
             return aux.getValor();
-            
+
         }
         /*valor encontrado direito possui um filho*/
-        else if (no.getValor() == valor
-                && no.getEsquerdo() == null 
+        else if (no.getValor().isEquals(valor)
+                && no.getEsquerdo() == null
                 && no.getDireito() != null
         ) {
-            No aux = no.getDireito();
+            No<T> aux = no.getDireito();
             no.setValor(no.getDireito().getValor());
             no.setDireito(null);
             return aux.getValor();
-            
+
         }
         /*valor encontrado sem filhos*/
-        else if (no.getValor() == valor
-                && no.getEsquerdo() == null 
+        else if (no.getValor().isEquals(valor)
+                && no.getEsquerdo() == null
                 && no.getDireito() == null
         ) {
             return no.getValor();
         }
         /*valor encontrado, e possui dois filhos*/
         else {
-            No noAux = removerMaximo(no.getEsquerdo());
-            int response = no.getValor();
+            No<T> noAux = removerMaximo(no.getEsquerdo());
+            Valor<T> response = no.getValor();
             no.setValor(noAux.getValor());
-            
+
             if(no.getValor() == no.getEsquerdo().getValor())
                 no.setEsquerdo(null);
-                
+
             return response;
         }
     }
@@ -188,29 +189,29 @@ public abstract class ArvoreAbstract {
      * @param no No - raz da sub-arvore para buscar o maior valor
      * @return No - nó removido
      */
-    public No removerMaximo(No no) {
-        if(no.getDireito() == null 
+    public No<T> removerMaximo(No<T> no) {
+        if(no.getDireito() == null
                 && no.getEsquerdo() == null) {
             return no;
         }
-        else if(no.getDireito() != null 
+        else if(no.getDireito() != null
                 && no.getDireito().getDireito() == null
                 && no.getDireito().getEsquerdo() == null) {
-            
-            No aux = no.getDireito();
+
+            No<T> aux = no.getDireito();
             no.setDireito(null);
             return aux;
         }
-        
+
         else if(no.getDireito() != null
                 && no.getDireito().getDireito() == null
                 && no.getDireito().getEsquerdo() != null) {
-            
-            No aux = no.getDireito();
+
+            No<T> aux = no.getDireito();
             no.setDireito(no.getDireito().getEsquerdo());
             return aux;
         }
-        
+
         else {
             return removerMaximo(no.getDireito());
         }
@@ -228,12 +229,12 @@ public abstract class ArvoreAbstract {
      * @author Hagamenon Oliveira <haganicolau@gmail.com>
      * @param no No - No da árvore.
      */
-    public int altura(No no) {
+    public int altura(No<T> no) {
         if(no != null) {
 
             int esq = altura(no.getEsquerdo()) + 1;
             int dir = altura(no.getDireito()) + 1;
-            int h = esq > dir ? esq : dir;
+            int h = Math.max(esq, dir);
             
             this.altura = h;
 

@@ -1,8 +1,10 @@
 package com.estruturadados.arvore;
 
-public class ArvoreBinaria extends ArvoreAbstract {
+import com.estruturadados.arvore.No.Valor;
 
-    public ArvoreBinaria(int valor) {
+public class ArvoreBinaria <T extends Comparable<T>> extends ArvoreAbstract {
+
+    public ArvoreBinaria(Valor<T> valor) {
         super(valor);
     }
 
@@ -12,11 +14,13 @@ public class ArvoreBinaria extends ArvoreAbstract {
      * @author Hagamenon Oliveira <haganicolau@gmail.com>
      * @param valor float - valor a ser inserido na árvore.
      */
-    public void inserir(int valor) {
+    @Override
+    public void inserir(Valor valor) {
         inserir(this.raiz, valor);
     }
 
-    public int remover(int valor) throws Exception {
+    @Override
+    public Valor<T> remover(Valor valor) throws Exception {
         return this.remover(this.raiz, valor);
     }
 

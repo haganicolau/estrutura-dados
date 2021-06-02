@@ -1,18 +1,20 @@
-package com.estruturadados.arvore;
+package com.estruturadados.arvore.No;
 
-public class No {
+public class No <T extends Comparable<T>>{
 
-    private No esquerdo; //left
-    private No direito; //right
-    private No pai;
+    private No<T> esquerdo;
+    private No<T> direito;
+    private No<T> pai;
+    private Valor<T> valor;
 
-    private int valor;
+
     private int fb;
+
 
     private boolean RED;
     private boolean BLACK;
 
-    public No(int valor) {
+    public No(Valor<T> valor) {
         this.valor = valor;
         this.esquerdo = null;
         this.direito = null;
@@ -22,35 +24,35 @@ public class No {
         this.RED = true;
     }
 
-    public void setValor(int valor) {
+    public void setValor(Valor<T> valor) {
         this.valor = valor;
     }
 
-    public int getValor() {
+    public Valor<T> getValor() {
         return this.valor;
     }
 
-    public void setEsquerdo(No no) {
+    public void setEsquerdo(No<T> no) {
         this.esquerdo = no;
     }
 
-    public No getEsquerdo() {
+    public No<T> getEsquerdo() {
         return this.esquerdo;
     }
 
-    public void setDireito(No no) {
+    public void setDireito(No<T> no) {
         this.direito = no;
     }
 
-    public No getDireito() {
+    public No<T> getDireito() {
         return this.direito;
     }
 
-    public void setPai(No no) {
+    public void setPai(No<T> no) {
         this.pai = no;
     }
 
-    public No getPai() {
+    public No<T> getPai() {
         return this.pai;
     }
 
