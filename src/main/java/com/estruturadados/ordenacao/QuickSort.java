@@ -6,62 +6,56 @@ import javax.tools.Diagnostic;
  *
  * @author Hagamenon.Oliveira<haganicolau@gmail.com>
  */
-public class QuickSort {
-    public static void main(String[] args) {
-        int vetor[] = {6,9,2,8,3,4,1,0,5};
+public class QuickSort extends AbstractSort {
 
-        sort(vetor, 0, vetor.length - 1);
-        printarVetor(vetor);
+
+    public QuickSort(int size) {
+        super(size);
     }
 
-    public static void sort(int vetor[], int inicio, int fim) {
-        if(inicio < fim) {
-            int posicaoPivo = separar(vetor, inicio, fim);
-            sort(vetor, inicio, posicaoPivo - 1);
-            sort(vetor, posicaoPivo + 1, fim);
+    public void sort() {
+        sort(this.array, 0, this.array.length - 1);
+    }
+
+    public void sort(int[] array, int first, int last) {
+        if(first < last) {
+            int pivot = part(array, first, last);
+            sort(array, first, pivot - 1);
+            sort(array, pivot + 1, last);
         }
     }
 
-    public static int separar(int vetor[], int inicio, int fim) {
-        int pivo = vetor[inicio];
-        int pontaEsq = inicio + 1;
-        int pontaDir = fim;
+    public int part(int[] array, int first, int last) {
+        int pivot = array[first];
+        int left = first + 1;
+        int right = last;
 
-        while(pontaEsq <= pontaDir) {
+        while(left <= right) {
             
-            if(vetor[pontaEsq] <= pivo) {
-                pontaEsq++;
+            if(array[left] <= pivot) {
+                left++;
             }
 
-            else if(vetor[pontaDir] > pivo) {
-                pontaDir--;
+            else if(array[right] > pivot) {
+                right--;
             }
 
             else {
-                troca(vetor, pontaEsq, pontaDir);
+                change(array, left, right);
             }
         }
 
-        vetor[inicio] = vetor[pontaDir];
-        vetor[pontaDir] = pivo;
-        return pontaDir;
+        array[first] = array[right];
+        array[right] = pivot;
+        return right;
     }
 
-    public static void troca(int vetor[], int pontaEsq, int pontaDir) {
-        int troca = vetor[pontaEsq];
-        vetor[pontaEsq] = vetor[pontaDir];
-        vetor[pontaDir] = troca;
-        pontaEsq++;
-        pontaDir--;
-    }
-
-    public static void printarVetor(int vetor[]) {
-        System.out.print("vetor [ ");
-        for(int i = 0; i < vetor.length; i++) {
-            System.out.print(vetor[i] + " ");
-        }
-        System.out.print("]; ");
-        System.out.println(" ");
+    public void change(int[] array, Integer left, Integer right) {
+        int troca = array[left];
+        array[left] = array[right];
+        array[right] = troca;
+        left += 1;
+        right -= 1;
     }
 
 }

@@ -1,38 +1,33 @@
 package com.estruturadados.ordenacao;
 
-public class SelectionSort {
+public class SelectionSort extends AbstractSort {
+
+    public SelectionSort(int size) {
+        super(size);
+    }
+
     /**
-     * @description Método selection sort O(n^2)
+     * Método selection sort O(n^2)
      * @author Hagamenon Oliveira <haganicolau@gmail.com>
      * @return void 
      */
-    public static void main(String args[]) {
-
-        int vetor[] ={1,5,2,0,7,8,9,4};
+    public void sort() {
         int i,j,min,aux;
 
-        for(i = 0; i < vetor.length; i++) {
+        for(i = 0; i < this.array.length; i++) {
             min = i;
             
-            for(j = i + 1; j < vetor.length; j++) {        
-                if(vetor[j] < vetor[min]) {
+            for(j = i + 1; j < this.array.length; j++) {
+                if(this.array[j] < this.array[min]) {
                     min = j;
                 }
 
             }
-            aux = vetor[i];
-            vetor[i] = vetor[min];
-            vetor[min] = aux;
+            aux = this.array[i];
+            this.array[i] = this.array[min];
+            this.array[min] = aux;
         }
 
-        printarVetor(vetor);
     }
 
-    public static void printarVetor(int vetor[]) {
-        System.out.print("vetor [ ");
-        for(int i = 0; i < vetor.length; i++) {
-            System.out.print(vetor[i]+" ");
-        }
-        System.out.print("];");
-    }
 }

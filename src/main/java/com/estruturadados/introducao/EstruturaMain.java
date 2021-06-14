@@ -1,8 +1,5 @@
 package com.estruturadados.introducao;
 
-import com.estruturadados.stack.StaticStack;
-
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class EstruturaMain {

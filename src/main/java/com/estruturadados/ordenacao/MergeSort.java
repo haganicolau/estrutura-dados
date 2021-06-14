@@ -1,49 +1,41 @@
 package com.estruturadados.ordenacao;
 
-public class MergeSort {
-    
-    public static void main(String [] args) {
-        int vetor[] = {7,2,9,4,3,0,8,6,1,5};
-        
-        sort(vetor, 0, vetor.length - 1);
-        printarVetor(vetor);
+public class MergeSort extends AbstractSort {
+
+    public MergeSort(int size) {
+        super(size);
     }
 
-    public static void sort(int vetor[], int inicio, int fim) {
-        if(inicio < fim) {
-            int meio = (inicio + fim) / 2;
-            sort(vetor, inicio, meio);
-            sort(vetor, meio + 1, fim);
-            merge(vetor, inicio, meio, fim);
-        }
+    public void sort() {
+        sort(this.array, 0, this.array.length - 1);
     }
 
-    public static void merge(int vetor[], int inicio, int meio, int fim) {
-
-        int secundario[] = new int[vetor.length];
-
-        for(int k = inicio; k <= fim; k++) {
-            secundario[k] = vetor[k];
-        }
-
-        int indiceEsquerdo = inicio;
-        int indiceDireito = meio+1;
-
-
-        for(int k = inicio; k <= fim; k++) {
-            if(indiceEsquerdo > meio) vetor[k] = secundario[indiceDireito++];
-            else if(indiceDireito > fim) vetor[k] = secundario[indiceEsquerdo++];
-            else if(secundario[indiceEsquerdo] < secundario[indiceDireito]) vetor[k] = secundario[indiceEsquerdo++];
-            else vetor[k] = secundario[indiceDireito++];
+    public void sort(int[] array, int first, int last) {
+        if(first < last) {
+            int middle = (first + last) / 2;
+            sort(array, first, middle);
+            sort(array, middle + 1, last);
+            merge(array, first, middle, last);
         }
     }
 
-    public static void printarVetor(int vetor[]) {
-        System.out.print("vetor [ ");
-        for(int i = 0; i < vetor.length; i++) {
-            System.out.print(vetor[i] + " ");
+    public void merge(int[] array, int first, int middle, int last) {
+
+        int[] secondary = new int[array.length];
+
+        for(int k = first; k <= last; k++) {
+            secondary[k] = array[k];
         }
-        System.out.print("]; ");
-        System.out.println(" ");
+
+        int left = first;
+        int right = middle + 1;
+
+
+        for(int k = first; k <= last; k++) {
+            if(left > middle) array[k] = secondary[right++];
+            else if(right > last) array[k] = secondary[left++];
+            else if(secondary[left] < secondary[right]) array[k] = secondary[left++];
+            else array[k] = secondary[right++];
+        }
     }
 }
