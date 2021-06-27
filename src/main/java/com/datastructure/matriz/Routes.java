@@ -6,7 +6,7 @@ package com.datastructure.matriz;
  */
 public class Routes {
 
-    private int map[][];
+    private int[][] map;
 
     public Routes() {
         this.map = new int[6][6];

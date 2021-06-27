@@ -6,7 +6,7 @@ import com.datastructure.linear.stack.exception.PopException;
 public class DinamicStack {
 
     /*node top*/
-    private Node top;
+    private final Node top;
 
     private int size;
 

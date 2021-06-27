@@ -10,23 +10,23 @@ import java.util.Scanner;
  * @author hagan
  */
 public class mainQueu {
-    public static void main(String args[]){
+    public static void main(String[] args){
 
-        exercicio02();
+        exercise02();
     }
 
     public static void exExemplo() {
-        DinamicQueue fila = new DinamicQueue();
-        fila.enqueueu(7);
-        fila.enqueueu(14);
-        fila.enqueueu(75);
-        fila.enqueueu(8);
-        fila.enqueueu(133);
+        DinamicQueue queue = new DinamicQueue();
+        queue.enqueueu(7);
+        queue.enqueueu(14);
+        queue.enqueueu(75);
+        queue.enqueueu(8);
+        queue.enqueueu(133);
 
         try{
-            while(!fila.isEmpty()) {
-                int elemento = fila.dequeue();
-                System.out.println("elemento fila: " + elemento);
+            while(!queue.isEmpty()) {
+                int number = queue.dequeue();
+                System.out.println("number queue: " + number);
             }
         } catch (DequeuException ex) {
             System.out.println(ex.getMessage());
@@ -35,36 +35,36 @@ public class mainQueu {
 
     public static void exercicio01() {
         /*
-         * 1- Desenvolva um algoritmo em Java, que usa a estrutura de fila simplesmente
-         * encadeada para armazenar valores inteiros, busque um elemento. Observação,
+         * 1- Desenvolva um algoritmo em Java, que usa a estrutura de queue simplesmente
+         * encadeada para armazenar valores inteiros, busque um number. Observação,
          * você só tem acesso às funções de dequeue e enqueue
          * */
-        DinamicQueue fila = new DinamicQueue();
+        DinamicQueue queue = new DinamicQueue();
         Scanner scan = new Scanner(System.in);
-        int elemento = 1;
-        while(elemento !=0) {
-            System.out.println("Informe um número. 0 para encerrar.");
-            elemento = scan.nextInt();
-            fila.enqueueu(elemento);
+        int number = 1;
+        while(number !=0) {
+            System.out.println("Enter a number 0 to terminate.");
+            number = scan.nextInt();
+            queue.enqueueu(number);
         }
 
-        System.out.println("Informe um número a ser buscado: ");
-        int numero = scan.nextInt();
+        System.out.println("Enter a number to be searched: ");
+        number = scan.nextInt();
 
-        boolean resposta = buscarNumero(fila, numero);
+        boolean resposta = searchNumber(queue, number);
         if(resposta) {
-            System.out.println("número encontrado...");
+            System.out.println("number found...");
         } else {
-            System.out.println("número não encontrado...");
+            System.out.println("number not found...");
         }
 
     }
 
-    public static boolean buscarNumero(DinamicQueue fila, int numero) {
+    public static boolean searchNumber(DinamicQueue queue, int number) {
         try{
-            while(!fila.isEmpty()) {
-                int elemento = fila.dequeue();
-                if(numero == elemento)
+            while(!queue.isEmpty()) {
+                int elemento = queue.dequeue();
+                if(number == elemento)
                     return true;
             }
         } catch(DequeuException ex) {
@@ -73,54 +73,54 @@ public class mainQueu {
         return false;
     }
 
-    public static void exercicio02() {
+    public static void exercise02() {
         /*
-        * 2- Dado uma fila sem tamanho definido, enfileire n números inteiros informados
+        * 2- Dado uma queue sem tamanho definido, enfileire n números inteiros informados
         * pelo usuário, enquanto os números forem diferentes de -1. Apresente a
-        * quantidade de elementos inseridos, a média, o maior o menor valor na fila.
+        * quantidade de elementos inseridos, a média, o bigger o smaller valor na queue.
          *
         * */
-        DinamicQueue fila = new DinamicQueue();
+        DinamicQueue queue = new DinamicQueue();
         Scanner scan = new Scanner(System.in);
-        int elemento = 1;
-        while(elemento != -1) {
-            System.out.println("Informe um número. 0 para encerrar.");
-            elemento = scan.nextInt();
-            fila.enqueueu(elemento);
+        int number = 1;
+        while(number != -1) {
+            System.out.println("Enter a number 0 to terminate.");
+            number = scan.nextInt();
+            queue.enqueueu(number);
         }
-        int maior = 0, menor = 0, contador = 0, soma = 0;
+        int bigger = 0, smaller = 0, counter = 0, sum = 0;
         double media;
 
         try{
-            while(!fila.isEmpty()) {
-                elemento = fila.dequeue();
-                if(contador == 0) {
-                    maior = elemento;
-                    menor = elemento;
+            while(!queue.isEmpty()) {
+                number = queue.dequeue();
+                if(counter == 0) {
+                    bigger = number;
+                    smaller = number;
                 }
 
-                if(elemento > maior) {
-                    maior = elemento;
+                if(number > bigger) {
+                    bigger = number;
                 }
 
-                if(elemento < menor) {
-                    menor = elemento;
+                if(number < smaller) {
+                    smaller = number;
                 }
-                soma = soma + elemento;
-                contador++;
+                sum = sum + number;
+                counter++;
             }
         } catch (DequeuException ex) {
             System.out.println(ex.getMessage());
         }
 
-        System.out.println("maior: " + maior);
-        System.out.println("menor: " + menor);
-        System.out.println("media: " + soma/contador);
-        System.out.println("Quantidade elementos: " + contador);
+        System.out.println("bigger: " + bigger);
+        System.out.println("smaller: " + smaller);
+        System.out.println("media: " + sum/counter);
+        System.out.println("Counter: " + counter);
 
     }
 
-    public static void exercicio03() {
+    public static void exercise03() {
         /*3- Dado uma fila sem tamanho definido, enfileire n números inteiros informados
          * pelo usuário, enquanto os números forem diferentes de -1. Enquanto
          * desenfileira apresente quantidade de elementos inseridos, a média,
@@ -129,7 +129,7 @@ public class mainQueu {
         * */
     }
 
-    public static void exercicio04() {
+    public static void exercise04() {
         /*
         * 4-Escreva um programa que simule o controle de uma pista de decolagem
         *    de aviões em um aeroporto. Neste programa, o usuário deve ser capaz de

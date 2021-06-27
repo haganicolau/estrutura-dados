@@ -5,8 +5,8 @@ import com.datastructure.linear.queue.exception.EnqueueException;
 
 public class StaticQueue {
 
-    private int queue[];
-    private int first;
+    private final int[] queue;
+    private final int first;
     private int last;
 
     public StaticQueue(int size) {

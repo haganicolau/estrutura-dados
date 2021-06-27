@@ -13,7 +13,7 @@ import java.util.Scanner;
  * @author haganicolau
  */
 public class MainRoutes {
-    public static void main(String args[]){
+    public static void main(String[] args){
         Routes routes = new Routes();
         routes.enterValues();
         int origin, destiny;

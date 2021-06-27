@@ -9,7 +9,7 @@ public class Matrix {
         /*
          *  1- Crie um algoritmo que leia uma matrix 3x3 do usuário, retorne a sum de todos os valores.
          */
-        int matrix[][] = createMatrix(3,3);
+        int[][] matrix = createMatrix(3,3);
         readMatrixUser(matrix);
         int sum = sumElements(matrix);
         System.out.println("Sum= "+sum);
@@ -17,7 +17,7 @@ public class Matrix {
         /*
          * 2- Crie um algoritmo em java que leia uma matrix 4x4 e print a diagonal principal
          */
-        int matrix2[][] = createMatrix(4,4);
+        int[][] matrix2 = createMatrix(4,4);
         readRandomMatrix(matrix2);
         printDiagonalMain(matrix2);
 
@@ -32,12 +32,12 @@ public class Matrix {
          *  - A[i][j] = 3i*2 − 1 se i = j;
          *  - A[i][j] = 4i*3 − 5j*2 + 1 se i > j.
          * */
-        int matrix4[][] = createMatrix(10,10);
+        int[][] matrix4 = createMatrix(10,10);
         exercise4(matrix4);
         writeMatrix(matrix4);
     }
 
-    public static void exercise4(int matrix[][]) {
+    public static void exercise4(int[][] matrix) {
         for(int indexI = 0; indexI < matrix.length; indexI++) {
             for(int indexJ = 0; indexJ < matrix[0].length; indexJ++) {
                 if(indexI < indexJ) {
@@ -52,68 +52,67 @@ public class Matrix {
         }
     }
 
-    public static int[][] createMatrix(int qtdLinhas, int qtdColunas) {
-        int matriz[][] = new int[qtdLinhas][qtdColunas];
-        return matriz;
+    public static int[][] createMatrix(int qtyRows, int qtyColumns) {
+        return new int[qtyRows][qtyColumns];
     }
 
-    public static void readRandomMatrix(int matriz[][]) {
+    public static void readRandomMatrix(int[][] matrix) {
         Random random = new Random();
-        for(int i = 0; i < matriz.length; i++) {
-            for(int j = 0; j < matriz[0].length; j++) {
-                matriz[i][j] = random.nextInt(100);
+        for(int indexI = 0; indexI < matrix.length; indexI++) {
+            for(int indexJ = 0; indexJ < matrix[0].length; indexJ++) {
+                matrix[indexI][indexJ] = random.nextInt(100);
             }
         }
     }
 
-    public static void readMatrixUser(int matriz[][]) {
+    public static void readMatrixUser(int[][] matriz) {
         Scanner scan = new Scanner(System.in);
-        for(int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[0].length; j++) {
-                System.out.println("Matriz["+i+"]["+j+"]= ");
-                matriz[i][j] = scan.nextInt();
+        for(int indexI = 0; indexI < matriz.length; indexI++) {
+            for (int indexJ = 0; indexJ < matriz[0].length; indexJ++) {
+                System.out.println("Matriz["+indexI+"]["+indexJ+"]= ");
+                matriz[indexI][indexJ] = scan.nextInt();
             }
         }
     }
 
-    public static int sumElements(int matriz[][]) {
-        int soma = 0;
-        for(int i = 0; i < matriz.length; i++) {
-            for(int j = 0; j< matriz[0].length; j++) {
-                soma = soma + matriz[i][j];
+    public static int sumElements(int[][] matriz) {
+        int sum = 0;
+        for(int indexI = 0; indexI < matriz.length; indexI++) {
+            for(int indexJ = 0; indexJ< matriz[0].length; indexJ++) {
+                sum = sum + matriz[indexI][indexJ];
             }
         }
-        return soma;
+        return sum;
     }
 
-    public static void printDiagonalMain(int matriz[][]) {
-        System.out.println("Diagonal Principal: ");
-        for(int i = 0; i < matriz.length; i++) {
-            for(int j = 0; j < matriz[0].length; j++) {
-                if(i == j) {
-                    System.out.print("Matriz["+i+"]["+j+"]= ");
-                    System.out.println(matriz[i][j]);
+    public static void printDiagonalMain(int[][] matrix) {
+        System.out.println("Main Diagonal: ");
+        for(int indexI = 0; indexI < matrix.length; indexI++) {
+            for(int indexJ = 0; indexJ < matrix[0].length; indexJ++) {
+                if(indexI == indexJ) {
+                    System.out.print("Matrix["+indexI+"]["+indexJ+"]= ");
+                    System.out.println(matrix[indexI][indexJ]);
                 }
             }
         }
     }
 
-    public static void printarDiagonalSecondary(int matriz[][]) {
-        System.out.println("Diagonal Secundária: ");
-        for(int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[0].length; j++) {
-                if(i + j == matriz.length -1) {
-                    System.out.print("Matriz["+i+"]["+j+"]= ");
-                    System.out.println(matriz[i][j]);
+    public static void printarDiagonalSecondary(int[][] matrix) {
+        System.out.println("Secondary Diagonal: ");
+        for(int indexI = 0; indexI < matrix.length; indexI++) {
+            for (int indexJ = 0; indexJ < matrix[0].length; indexJ++) {
+                if(indexI + indexJ == matrix.length -1) {
+                    System.out.print("Matrix["+indexI+"]["+indexJ+"]= ");
+                    System.out.println(matrix[indexI][indexJ]);
                 }
             }
         }
     }
 
-    public static void writeMatrix(int matriz[][]) {
-        for(int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[0].length; j++) {
-                System.out.print(matriz[i][j] + " ");
+    public static void writeMatrix(int[][] matrix) {
+        for(int indexI = 0; indexI < matrix.length; indexI++) {
+            for (int indexJ = 0; indexJ < matrix[0].length; indexJ++) {
+                System.out.print(matrix[indexI][indexJ] + " ");
             }
             System.out.println("");
         }

@@ -1,4 +1,4 @@
-package com.datastructure.busca;
+package com.datastructure.search;
 
 public class PesquisaSequencial {
     

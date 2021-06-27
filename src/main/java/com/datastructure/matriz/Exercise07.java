@@ -20,7 +20,7 @@ public class Exercise07 {
         * */
 
         Random random = new Random();
-        int matrix[][] = new int[5][5];
+        int[][] matrix = new int[5][5];
         for(int i = 0; i < matrix.length; i++) {
             for(int j = 0; j < matrix[0].length; j++) {
                 matrix[i][j] = random.nextInt(100);
@@ -28,16 +28,15 @@ public class Exercise07 {
         }
 
         printMatrix(matrix);
-        int diagonalP[] = findMainDiagonal(matrix);
-        int diagonalS[] = findSecondaryDiagonal(matrix);
+        int[] diagonalP = findMainDiagonal(matrix);
+        int[] diagonalS = findSecondaryDiagonal(matrix);
         changeMainDiagonalToSecondary(diagonalP, diagonalS, matrix);
-        System.out.println("");
-        System.out.println("");
+
         printMatrix(matrix);
     }
 
-    public static int[] findMainDiagonal(int matrix[][]) {
-        int mainDiagonal[] = new int[matrix.length];
+    public static int[] findMainDiagonal(int[][] matrix) {
+        int[] mainDiagonal = new int[matrix.length];
         for(int indexI = 0; indexI < matrix.length; indexI++) {
             for (int indexJ = 0; indexJ < matrix[0].length; indexJ++) {
                 if(indexI == indexJ) {
@@ -48,8 +47,8 @@ public class Exercise07 {
         return mainDiagonal;
     }
 
-    public static int[] findSecondaryDiagonal(int matriz[][]) {
-        int secondaryDiagonal[] = new int[matriz.length];
+    public static int[] findSecondaryDiagonal(int[][] matriz) {
+        int[] secondaryDiagonal = new int[matriz.length];
         int diagonalIndex = 0;
 
         for(int indexI = 0; indexI < matriz.length; indexI++) {
@@ -64,7 +63,7 @@ public class Exercise07 {
         return secondaryDiagonal;
     }
 
-    public static void changeMainDiagonalToSecondary(int mainDiagonal[], int secondaryDiagonal[], int matrix[][]) {
+    public static void changeMainDiagonalToSecondary(int[] mainDiagonal, int[] secondaryDiagonal, int[][] matrix) {
         int diagonalIndex = 0;
         for(int indexI = 0; indexI < matrix.length; indexI++) {
             for (int indexJ = 0; indexJ < matrix[0].length; indexJ++) {
@@ -80,7 +79,7 @@ public class Exercise07 {
         }
     }
 
-    public static void printMatrix(int matrix[][]) {
+    public static void printMatrix(int[][] matrix) {
         for (int indexI = 0; indexI < matrix.length; indexI++) {
             for (int indexJ = 0; indexJ < matrix[0].length; indexJ++) {
                 System.out.print(" " + matrix[indexI][indexJ]);

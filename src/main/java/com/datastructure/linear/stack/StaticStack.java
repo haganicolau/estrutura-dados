@@ -12,10 +12,10 @@ public class StaticStack {
     private int top;
 
     /** STACK STRUCTURE*/
-    private int stack[];
+    private int[] stack;
 
     /** STACK SIZE*/
-    private int size;
+    private final int size;
 
     public StaticStack(int size) {
         this.stack = new int[size];

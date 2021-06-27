@@ -1,4 +1,4 @@
-package com.datastructure.vetor;
+package com.datastructure.array;
 
 import java.util.Scanner;
 

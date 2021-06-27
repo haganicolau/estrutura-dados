@@ -8,31 +8,31 @@ public class StackMain {
     public static void main(String [] args) {
 
         /*
-        * 1- Crie um algoritmo que leia uma pilha dinâmica, que
+        * 1- Crie um algoritmo que leia uma stack dinâmica, que
         * vai empilhar enquanto os elementos forem diferentes de 0,
         * quando terminar, desempilhar printando todos os valores.
         *
         * */
 
-        DinamicStack pilha = new DinamicStack();
+        DinamicStack stack = new DinamicStack();
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("Informe um número: ");
-        int elemento = scan.nextInt();
+        System.out.println("Enter a number: ");
+        int number = scan.nextInt();
 
-        while(elemento != 0) {
-            pilha.push(elemento);
+        while(number != 0) {
+            stack.push(number);
 
-            System.out.println("Informe um número: ");
-            elemento = scan.nextInt();
+            System.out.println("Enter a number: ");
+            number = scan.nextInt();
         }
 
         try {
             System.out.println(" ");
-            System.out.println("Printando elementos da pilha: ");
-            while (!pilha.isEmpty()) {
-                elemento = pilha.pop();
-                System.out.println("elemento: "+elemento);
+            System.out.println("Printing elements from the stack: ");
+            while (!stack.isEmpty()) {
+                number = stack.pop();
+                System.out.println("number: "+number);
             }
         } catch (PopException ex) {
             System.out.println(ex.getMessage());
@@ -40,36 +40,36 @@ public class StackMain {
 
     }
 
-    public static void exemploPilhaDinamica() {
-        DinamicStack pilha = new DinamicStack();
+    public static void exampleDynamicStack() {
+        DinamicStack stack = new DinamicStack();
 
-        pilha.push(7);
-        pilha.push(14);
-        pilha.push(75);
-        pilha.push(8);
-        pilha.push(133);
+        stack.push(7);
+        stack.push(14);
+        stack.push(75);
+        stack.push(8);
+        stack.push(133);
 
         try{
-            int valor1 = pilha.pop();
-            System.out.println("valor 1: "+ valor1);
+            int value1 = stack.pop();
+            System.out.println("value 1: "+ value1);
 
-            int valor2 = pilha.pop();
-            System.out.println("valor 2: "+ valor2);
+            int value2 = stack.pop();
+            System.out.println("value 2: "+ value2);
 
-            int valor3 = pilha.pop();
-            System.out.println("valor 3: "+ valor3);
+            int value3 = stack.pop();
+            System.out.println("value 3: "+ value3);
 
-            int valor4 = pilha.pop();
-            System.out.println("valor 4: "+ valor4);
+            int value4 = stack.pop();
+            System.out.println("value 4: "+ value4);
 
-            int valor5 = pilha.pop();
-            System.out.println("valor 5: "+ valor5);
+            int value5 = stack.pop();
+            System.out.println("valor 5: "+ value5);
         } catch( PopException exc) {
             System.out.println(exc.getMessage());
         }
     }
 
-    public static void exercicioExtra01() {
+    public static void exerciseExtra01() {
         /*
          * Crie um algoritmo que leia uma pilha estática de 10 posições e imprima
          * (print) todos os valores.
@@ -78,15 +78,15 @@ public class StackMain {
         Scanner scan = new Scanner(System.in);
 
         try {
-            for (int contador = 0; contador < 10; contador++) {
-                System.out.println("Informe o elemento: ");
+            for (int counter = 0; counter < 10; counter++) {
+                System.out.println("Enter a number: ");
                 stack.push(scan.nextInt());
             }
         } catch (PushException pushException) {
             System.out.println(pushException.getMessage());
         }
 
-        System.out.println("Elemento do topo: " + stack.peek());
+        System.out.println("Top Number: " + stack.peek());
 
         try {
             while (!stack.isEmpty()) {
@@ -97,15 +97,15 @@ public class StackMain {
         }
     }
 
-    public static void exercicioExtra02() {
+    public static void exerciseExtra02() {
         /*
          * Crie um algoritmo que leia uma pilha estática de 15 posições e some
          * os elementos pares após desempilhar
          * */
         StaticStack stack = new StaticStack(15);
         Scanner scan = new Scanner(System.in);
-        for(int contador = 0; contador < 15; contador++) {
-            System.out.println("Informe o elemento: ");
+        for(int counter = 0; counter < 15; counter++) {
+            System.out.println("Enter a number: ");
             try {
                 stack.push(scan.nextInt());
             } catch (PushException pushException) {
@@ -113,25 +113,25 @@ public class StackMain {
                 break;
             }
         }
-        int soma = 0;
+        int sum = 0;
         try {
             while(!stack.isEmpty()) {
                 int aux = stack.pop();
                 if(aux%2 == 0) {
-                    soma = soma + aux;
+                    sum = sum + aux;
                 }
             }
         } catch (PopException popException) {
             System.out.println(popException.getMessage());
         }
-        System.out.println("valor da soma: " + soma);
+        System.out.println("Sum: " + sum);
     }
 
-    public static boolean exercicioExtra03(StaticStack pilha) {
+    public static boolean exerciseExtra03(StaticStack stack) {
         try {
-            int topo = pilha.pop();
-            while (!pilha.isEmpty()) {
-                if (pilha.pop() > topo) {
+            int top = stack.pop();
+            while (!stack.isEmpty()) {
+                if (stack.pop() > top) {
                     return false;
                 }
             }
@@ -142,34 +142,31 @@ public class StackMain {
         }
     }
 
-    public static boolean exercicioExtra04(StaticStack pilha) {
-        int maiorElemento = 0;
-        StaticStack stackAux = new StaticStack(pilha.length());
-        for(int contador  = 0; contador < pilha.length(); contador++) {
+    public static boolean exerciseExtra04(StaticStack stack) {
+        int biggestNumber = 0;
+        StaticStack stackAux = new StaticStack(stack.length());
+        for(int counter  = 0; counter < stack.length(); counter++) {
             try {
-                stackAux.push(pilha.pop());
+                stackAux.push(stack.pop());
             } catch (PushException pushException) {
                 System.out.println(pushException.getMessage());
                 break;
             } catch (PopException popException) {
                 System.out.println(popException.getMessage());
             }
-            if(stackAux.peek() > maiorElemento || contador == 0) {
-                maiorElemento = stackAux.peek();
+            if(stackAux.peek() > biggestNumber || counter == 0) {
+                biggestNumber = stackAux.peek();
             }
         }
-        for(int contador  = 0; contador < stackAux.length(); contador++) {
+        for(int counter  = 0; counter < stackAux.length(); counter++) {
             try {
-                pilha.push(stackAux.pop());
-            } catch (PushException pushException) {
+                stack.push(stackAux.pop());
+            } catch (PushException | PopException pushException) {
                 System.out.println(pushException.getMessage());
-                break;
-            } catch (PopException popException) {
-                System.out.println(popException.getMessage());
                 break;
             }
         }
 
-        return pilha.peek() == maiorElemento;
+        return stack.peek() == biggestNumber;
     }
 }

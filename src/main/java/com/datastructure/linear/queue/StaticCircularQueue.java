@@ -4,7 +4,7 @@ import com.datastructure.linear.queue.exception.DequeuException;
 import com.datastructure.linear.queue.exception.EnqueueException;
 
 public class StaticCircularQueue {
-    private int queue[];
+    private final int[] queue;
     private int first;
     private int last;
     private int quantity;
@@ -54,12 +54,5 @@ public class StaticCircularQueue {
         this.quantity--;
         return element;
     }
-
-
-
-
-
-
-
 
 }

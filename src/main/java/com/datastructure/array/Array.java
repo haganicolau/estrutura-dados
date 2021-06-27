@@ -1,9 +1,9 @@
-package com.datastructure.vetor;
+package com.datastructure.array;
 
 import java.util.Random;
 import java.util.Scanner;
 
-public class Vetor {
+public class Array {
 
     public static void main (String [] args) {
 
@@ -18,7 +18,7 @@ public class Vetor {
         * 2- Crie um algoritmo com 30 posições, peça que o usuário preencha com valores aleatórios.
         *    Após preenchido identifique o bigger e o smaller number do array.
         */
-        int array[] = arrayCreate(5);
+        int[] array = arrayCreate(5);
         enterRandomValues(array);
         int bigger = searchForTheBigger(array);
         int smaller = searchForTheSmaller(array);
@@ -52,12 +52,11 @@ public class Vetor {
 
     }
 
-    static int[] arrayCreate(int tamanho) {
-        int vetor[] = new int[tamanho];
-        return vetor;
+    static int[] arrayCreate(int size) {
+        return new int[size];
     }
 
-    static void popularVetorUsuario(int array[]) {
+    static void popularVetorUsuario(int[] array) {
         int size = array.length;
         Scanner scan = new Scanner(System.in);
         for(int index = 0; index < size; index++) {
@@ -66,7 +65,7 @@ public class Vetor {
         }
     }
 
-    static void enterRandomValues(int array[]) {
+    static void enterRandomValues(int[] array) {
         int size = array.length;
         Random random = new Random();
         for(int index = 0; index < size; index++) {
@@ -75,7 +74,7 @@ public class Vetor {
     }
 
     static void arrayRun1To10() {
-        int array[] = new int[10];
+        int[] array = new int[10];
         int size = array.length;
 
         for(int index = 0; index < size; index++) {
@@ -87,7 +86,7 @@ public class Vetor {
         }
     }
 
-    static int searchForTheBigger(int array[]) {
+    static int searchForTheBigger(int[] array) {
         int size = array.length;
         int bigger = 0;
         for(int index = 0; index < size; index++) {
@@ -103,7 +102,7 @@ public class Vetor {
         return bigger;
     }
 
-    static int searchForTheSmaller(int array[]) {
+    static int searchForTheSmaller(int[] array) {
         int size = array.length;
         int smaller = 0;
         for(int index = 0; index < size; index++) {
@@ -119,7 +118,7 @@ public class Vetor {
         return smaller;
     }
 
-    static double calculateMediaArithmeticArray(int array[]) {
+    static double calculateMediaArithmeticArray(int[] array) {
         int size = array.length;
         int sum = 0;
 
@@ -127,10 +126,10 @@ public class Vetor {
             sum = sum + array[index];
         }
 
-        return sum/size;
+        return sum / size;
     }
 
-    static int showNumber(int array[], int position) {
+    static int showNumber(int[] array, int position) {
         int size = array.length;
         if(position < 0 || position >= size) {
             System.out.println("Invalid position");

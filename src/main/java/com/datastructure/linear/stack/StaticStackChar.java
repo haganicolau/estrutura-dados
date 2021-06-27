@@ -9,10 +9,10 @@ public class StaticStackChar {
     private int top;
 
     /** ESTRUTURA ESTÁTICA DE PILHA*/
-    private char stack[];
+    private final char[] stack;
 
     /** TAMANHO MÁXIMO DA PILHA*/
-    private int size;
+    private final int size;
 
     public StaticStackChar(int size) {
         this.stack = new char[size];
@@ -34,7 +34,7 @@ public class StaticStackChar {
 
     public char peek() {
         if(isEmpty()) {
-            System.out.println("Pilha vazia não é possível retornar o topo");
+            System.out.println("Empty stack cannot return to top");
             return 0;
         }
         return this.stack[this.top];
@@ -42,7 +42,7 @@ public class StaticStackChar {
 
     public void push(char value) {
         if(isFull()) {
-            System.out.println("Pilha cheia! não é possível empilhar novo ítem");
+            System.out.println("Full stack! it is not possible to stack new item");
             return;
         }
         this.top++;
@@ -51,12 +51,12 @@ public class StaticStackChar {
 
     public char pop() {
         if(isEmpty()) {
-            System.out.println("Pilha vazia, não é possível desempilhar");
+            System.out.println("Empty stack, can't unstack");
             char response = 0;
             return response;
         }
-        char letra = this.stack[this.top];
+        char letter = this.stack[this.top];
         this.top--;
-        return letra;
+        return letter;
     }
 }

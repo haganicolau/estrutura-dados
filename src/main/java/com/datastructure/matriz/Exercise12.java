@@ -9,18 +9,18 @@ public class Exercise12 {
         * 12- Crie uma função em java que receba por parâmetro duas matrizes lidas
         *     e retorne uma matriz resultante da união das matrizes.
         * */
-        int matriz1[][] = new int[5][5];
-        int matriz2[][] = new int[5][5];
+        int[][] matriz1 = new int[5][5];
+        int[][] matriz2 = new int[5][5];
         lerMatrizRandomica(matriz1);
         lerMatrizRandomica(matriz2);
-        int matrizUniao[][] = uniaoMatriz(matriz1,matriz2);
+        int[][] matrizUniao = uniaoMatriz(matriz1,matriz2);
     }
 
-    public static void lerMatrizRandomica(int matriz[][]) {
+    public static void lerMatrizRandomica(int[][] matrix) {
         Random random = new Random();
-        for(int i = 0; i < matriz.length; i++) {
-            for(int j = 0; j < matriz[0].length; j++) {
-                matriz[i][j] = random.nextInt(100);
+        for(int indexI = 0; indexI < matrix.length; indexI++) {
+            for(int indexJ = 0; indexJ < matrix[0].length; indexJ++) {
+                matrix[indexI][indexJ] = random.nextInt(100);
             }
         }
     }
