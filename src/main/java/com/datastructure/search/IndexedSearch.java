@@ -3,7 +3,7 @@ package com.datastructure.search;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BuscaIndexada {
+public class IndexedSearch {
     public static void main(String [] args) {
         Map<Integer, String> mapExamples = new HashMap<Integer, String>();
         mapExamples.put(1, new String("Alana"));
@@ -15,10 +15,10 @@ public class BuscaIndexada {
         mapExamples.put(7, new String("Luan"));
         mapExamples.put(8, new String("Marcos"));
 
-        int indices[] = {1,2,3,4,5,6,7,8};
+        int[] indices = {1,2,3,4,5,6,7,8};
 
-        String pessoa = indexSearch(mapExamples, 4);
-        System.out.println("Pessoa: " + pessoa);
+        String people = indexSearch(mapExamples, 4);
+        System.out.println("Pessoa: " + people);
 
     }
 

@@ -1,27 +1,27 @@
 package com.datastructure.search;
 
-public class PesquisaSequencial {
+public class SequentialSearch {
     
     public static void main(String [] args) {
         int array[] = {24,25,26,27,28,32,33,34,35,40,41,42,43,47,49,51,59,60,67};
-        int posicao = simpleSearch(array, 35);
+        int position = simpleSearch(array, 35);
 
-        System.out.println("Posição: " + posicao);
+        System.out.println("position: " + position);
     }
 
-    public static int simpleSearch(int array[], int value) {
+    public static int simpleSearch(int[] array, int value) {
         int index = 0;
-        int comparacoes = 0;
+        int compares = 0;
 
         while((array[index] != value) && index < array.length) {
-            comparacoes++;
+            compares++;
             index++;
         }
-        System.out.println("comparacoes: " +comparacoes );
+        System.out.println("compares: " +compares );
         return index;
     }
 
-    public static int search(int array[], int value) {
+    public static int search(int[] array, int value) {
         int index = 0;
         boolean find = false;
 
@@ -39,9 +39,9 @@ public class PesquisaSequencial {
         return array.length;
     }
 
-    public static int sentinelSearch(int array[], int value) {
-        int aux[] = new int[array.length + 1];
-        int operacao = 0;
+    public static int sentinelSearch(int[] array, int value) {
+        int[] aux = new int[array.length + 1];
+        int operation = 0;
 
         for(int index = 0; index < array.length; index++) {
             aux[index] = array[index];
