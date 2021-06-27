@@ -1,4 +1,4 @@
-package com.datastructure.ordenacao;
+package com.datastructure.sort;
 
 public class ShellSort extends AbstractSort {
 

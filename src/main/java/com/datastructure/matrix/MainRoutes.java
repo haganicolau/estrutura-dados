@@ -1,4 +1,4 @@
-package com.datastructure.matriz;
+package com.datastructure.matrix;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

@@ -1,4 +1,4 @@
-package com.datastructure.matriz;
+package com.datastructure.matrix;
 
 import java.util.Random;
 
