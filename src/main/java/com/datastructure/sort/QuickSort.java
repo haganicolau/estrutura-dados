@@ -9,6 +9,7 @@ public class QuickSort extends AbstractSort {
 
     public QuickSort(int size) {
         super(size);
+        this.generateRandomArray();
     }
 
     public void sort() {
@@ -31,15 +32,18 @@ public class QuickSort extends AbstractSort {
         while(left <= right) {
             
             if(array[left] <= pivot) {
+                this.compare++;
                 left++;
             }
 
             else if(array[right] > pivot) {
+                this.compare++;
                 right--;
             }
 
             else {
                 change(array, left, right);
+                this.change++;
             }
         }
 

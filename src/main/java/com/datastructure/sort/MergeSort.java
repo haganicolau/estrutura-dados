@@ -4,6 +4,7 @@ public class MergeSort extends AbstractSort {
 
     public MergeSort(int size) {
         super(size);
+        this.generateRandomArray();
     }
 
     public void sort() {
@@ -20,6 +21,7 @@ public class MergeSort extends AbstractSort {
     }
 
     public void merge(int[] array, int first, int middle, int last) {
+        this.compare++;
 
         int[] secondary = new int[array.length];
 
@@ -30,12 +32,21 @@ public class MergeSort extends AbstractSort {
         int left = first;
         int right = middle + 1;
 
-
         for(int k = first; k <= last; k++) {
-            if(left > middle) array[k] = secondary[right++];
-            else if(right > last) array[k] = secondary[left++];
-            else if(secondary[left] < secondary[right]) array[k] = secondary[left++];
-            else array[k] = secondary[right++];
+            if(left > middle) {
+                array[k] = secondary[right++];
+            }
+            else if(right > last) {
+                array[k] = secondary[left++];
+            }
+            else if(secondary[left] < secondary[right]) {
+                array[k] = secondary[left++];
+                this.change++;
+            }
+            else {
+                array[k] = secondary[right++];
+                this.change++;
+            }
         }
     }
 }

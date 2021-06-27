@@ -4,6 +4,7 @@ public class ShellSort extends AbstractSort {
 
     public ShellSort(int size) {
         super(size);
+        this.generateRandomArray();
     }
 
     public void sort() {
@@ -19,9 +20,11 @@ public class ShellSort extends AbstractSort {
                 key = array[i];
                 j = i;
 
+                this.compare++;
                 while (j >= h && array[j - h] > key) {
                     array[j] = array[j - h];
                     j = j - h;
+                    this.change++;
                 }
                 array[j] = key;
             }

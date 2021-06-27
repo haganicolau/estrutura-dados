@@ -8,6 +8,7 @@ public class InsertionSort extends AbstractSort {
 
     public InsertionSort(int size) {
         super(size);
+        this.generateRandomArray();
     }
 
     /**
@@ -22,13 +23,13 @@ public class InsertionSort extends AbstractSort {
             key = this.array[j];
             i = j - 1;
 
-            this.compare++;
             while(i >= 0 && this.array[i] > key) {
                 this.array[i + 1] = this.array[i];
                 i--;
 
-                this.change++;
+                this.compare++;
             }
+            this.change++;
             this.array[i + 1] = key;
         }
     }

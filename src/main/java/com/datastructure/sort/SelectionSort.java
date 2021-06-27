@@ -4,6 +4,7 @@ public class SelectionSort extends AbstractSort {
 
     public SelectionSort(int size) {
         super(size);
+        this.generateRandomArray();
     }
 
     /**
@@ -16,9 +17,11 @@ public class SelectionSort extends AbstractSort {
 
         for(i = 0; i < this.array.length; i++) {
             min = i;
-            
+
             for(j = i + 1; j < this.array.length; j++) {
+                this.compare++;
                 if(this.array[j] < this.array[min]) {
+                    this.change++;
                     min = j;
                 }
 

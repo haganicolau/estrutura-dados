@@ -6,7 +6,7 @@ public abstract class AbstractSort {
 
     protected int change;
     protected int compare;
-    protected int array[];
+    protected int[] array;
 
     public AbstractSort(int size) {
         this.change = 0;
@@ -24,12 +24,13 @@ public abstract class AbstractSort {
         }
     }
 
-    public void printarVetor() {
+    public void arrayPrint() {
         System.out.print("array [ ");
         for (int j : this.array) {
             System.out.print(j + " ");
         }
         System.out.print("];");
+        System.out.println("");
     }
 
     public int getCompare() {
