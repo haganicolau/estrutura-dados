@@ -1,54 +1,21 @@
 package com.datastructure.array;
 
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.Base64;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Base64;
 
 public class Array {
 
-    public static void main (String [] args) {
-
-        /*
-         * 1- Crie um algoritmo que crie um array de 10 posições, insira os números de 1 a 10.
-         *    Depois imprima os valores.
-         */
-        arrayRun1To10();
+    public static void main (String [] args) throws IOException {
 
 
-        /*
-        * 2- Crie um algoritmo com 30 posições, peça que o usuário preencha com valores aleatórios.
-        *    Após preenchido identifique o bigger e o smaller number do array.
-        */
-        int[] array = arrayCreate(5);
-        enterRandomValues(array);
-        int bigger = searchForTheBigger(array);
-        int smaller = searchForTheSmaller(array);
-        System.out.println("bigger: " + bigger);
-        System.out.println("smaller: " + smaller);
-
-
-        /*
-         * 3- Crie um algoritmo que leia 50 valores e insira em um array. Posteriormente, calcule a média aritmética dos valores do array.
-         */
-        enterRandomValues(array);
-        double arithmeticAverage = calculateMediaArithmeticArray(array);
-        System.out.println("average: " + arithmeticAverage);
-
-
-        /*
-        * 4- Crie uma função que você passa um array e uma posição por parâmetro e ele retorna o number da posição.
-        *    Se posição inválida, informar ao usuário: “Posição inválida”. retornar -1;
-        * */
-        int number = showNumber(array, 51);
-        System.out.println("number in position 51: " + number);
-
-
-        /*
-         * 5- Crie uma função que você passa um array e um number e busque este number no array e retorna a posição
-         *    Se number não encontrado, informar 'number nao encontrado' retornar -1;
-         *
-         * */
-        int posicao = searchNumberFromPosition(array, 5);
-        System.out.println("number in position 5: " + posicao);
+        LocalDateTime accessTime = LocalDateTime.now().minusHours(1);
+        LocalDateTime timeToExpire = accessTime.plusSeconds(5800);
+        LocalDateTime currentTime = LocalDateTime.now();
+        currentTime.isAfter(timeToExpire);
 
     }
 

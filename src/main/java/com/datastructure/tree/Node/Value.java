@@ -1,6 +1,6 @@
 package com.datastructure.tree.Node;
 
-import org.jetbrains.annotations.NotNull;
+//import org.jetbrains.annotations.NotNull;
 
 public class Value<T extends Comparable<T>> implements Comparable<T>  {
 
@@ -13,7 +13,7 @@ public class Value<T extends Comparable<T>> implements Comparable<T>  {
     public T getT() { return value; }
 
     @Override
-    public int compareTo(@NotNull T e) { return getT().compareTo(e); }
+    public int compareTo(T e) { return getT().compareTo(e); }
 
     public int compareTo(Value<T> other)
     {
