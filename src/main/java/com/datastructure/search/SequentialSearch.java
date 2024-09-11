@@ -25,7 +25,7 @@ public class SequentialSearch {
         int index = 0;
         boolean find = false;
 
-        while((find == false) && index < array.length) {
+        while ((find == false) && index < array.length) {
          if(array[index] == value) {
              find = true;
              continue;
@@ -34,7 +34,7 @@ public class SequentialSearch {
          index++;   
         }
 
-        if(find) return index;
+        if (find) return index;
 
         return array.length;
     }

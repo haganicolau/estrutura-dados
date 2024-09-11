@@ -6,12 +6,12 @@ public class Main {
 
         Bank bankNic = new Bank();
 
-        bankNic.addNewAccount(1, 100.00);//90 90    90   100 100
-        bankNic.addNewAccount(2, 105.00);//210 220  245  235 235
-        bankNic.addNewAccount(3, 115.00);//150 150  125  150 135
-        bankNic.addNewAccount(4, 120.00);
-        bankNic.addNewAccount(5, 125.00);
-        bankNic.addNewAccount(6, 130.00);
+        bankNic.addNewAccount(1, 100.00);//90   80      70     60     50
+        bankNic.addNewAccount(2, 105.00);//115
+        bankNic.addNewAccount(3, 115.00);//     125
+        bankNic.addNewAccount(4, 120.00);//              130
+        bankNic.addNewAccount(5, 125.00);//                     135
+        bankNic.addNewAccount(6, 130.00);//                            140
         /**
          * 1- transfer
          * 2- deposit

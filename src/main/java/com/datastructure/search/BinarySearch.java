@@ -15,15 +15,15 @@ public class BinarySearch {
         boolean find = false;
         int compares = 0;
 
-        while((left<=right) && (! find)) {
+        while ((left<=right) && (! find)) {
             compares++;
             middle = (left + right) / 2;
 
-            if(array[middle] == value) {
+            if (array[middle] == value) {
                 find = true;
             }
 
-            else if(array[middle] < value) {
+            else if (array[middle] < value) {
                 left = middle + 1;
             }
 
@@ -32,7 +32,7 @@ public class BinarySearch {
             }
         }
         System.out.println("compares: "+ compares);
-        if(value == array[middle]) {
+        if (value == array[middle]) {
             return middle;
         }
         System.out.println("compares: "+ compares);
@@ -41,15 +41,15 @@ public class BinarySearch {
 
     public static int searchBinarioRecursive(int[] array, int value, int start, int end) {
         
-        if(start > end) return array.length;
+        if (start > end) return array.length;
 
         int middle = (start + end) / 2;
 
-        if(array[middle] == value) {
+        if (array[middle] == value) {
             return middle;
         }
 
-        if(value < array[middle]) {
+        if (value < array[middle]) {
             int left = middle - 1;
             return searchBinarioRecursive(array, value, start, left);
         }

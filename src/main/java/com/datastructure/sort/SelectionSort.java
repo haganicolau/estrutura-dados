@@ -15,12 +15,12 @@ public class SelectionSort extends AbstractSort {
     public void sort() {
         int i,j,min,aux;
 
-        for(i = 0; i < this.array.length; i++) {
+        for (i = 0; i < this.array.length; i++) {
             min = i;
 
-            for(j = i + 1; j < this.array.length; j++) {
+            for (j = i + 1; j < this.array.length; j++) {
                 this.compare++;
-                if(this.array[j] < this.array[min]) {
+                if (this.array[j] < this.array[min]) {
                     this.change++;
                     min = j;
                 }

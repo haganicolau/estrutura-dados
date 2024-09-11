@@ -42,12 +42,6 @@ public class Operation extends Thread {
         origin.withdrawal(value);
         destin.deposit(value);
 
-//        synchronized (contaOrigem) {
-//            synchronized (contaDestino) {
-//                contaOrigem.sacar(valor);
-//                contaDestino.depositar(valor);
-//            }
-//        }
     }
 
     public void deposit(Integer fromAccount, Double value) {
